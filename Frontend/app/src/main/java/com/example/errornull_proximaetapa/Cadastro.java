@@ -44,7 +44,7 @@ public class Cadastro extends AppCompatActivity {
         cadastro = findViewById(R.id.cadastrar);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://backend-proximaetapa.onrender.com/](https://backend-proximaetapa.onrender.com/")
+                .baseUrl("https://backend-proximaetapa.onrender.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

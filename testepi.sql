@@ -1,6 +1,3 @@
-CREATE DATABASE IF NOT EXISTS testepi; 
-USE testepi;
- 
 CREATE TABLE Universidade ( 
     id_universidade    INT AUTO_INCREMENT PRIMARY KEY, 
     nome_universidade  VARCHAR(150) NOT NULL, 

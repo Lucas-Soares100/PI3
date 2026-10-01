@@ -35,7 +35,7 @@ public class LoginInfo extends AppCompatActivity {
         botaoConfirmar = findViewById(R.id.button);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://backend-proximaetapa.onrender.com/](https://backend-proximaetapa.onrender.com/")
+                .baseUrl("https://backend-proximaetapa.onrender.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
