@@ -35,7 +35,7 @@ public class LoginInfo extends AppCompatActivity {
         botaoConfirmar = findViewById(R.id.button);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://backend-proximaetapa.onrender.com/")
+                .baseUrl("https://pi3-kc5f.onrender.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -74,6 +74,15 @@ public class LoginInfo extends AppCompatActivity {
                     }
                 });
             }
+        });
+
+        Button btnIrCadastro = findViewById(R.id.btn_ir_cadastro);
+        btnIrCadastro.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+        Intent intent = new Intent(LoginInfo.this, Cadastro.class);
+        startActivity(intent);
+        }
         });
     }
 }

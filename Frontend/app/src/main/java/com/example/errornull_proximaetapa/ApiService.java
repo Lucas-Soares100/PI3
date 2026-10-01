@@ -11,10 +11,10 @@ public interface ApiService {
     /*@GET("/cursos")
     Call<List<Curso>> getCursos();*/
 
-    @POST("/alunos/login")
+    @POST("alunos/login")
     Call<Void> fazerLogin(@Body LoginRequest request);
 
-    @POST("/alunos/cadastrar")
+    @POST("alunos/cadastrar")
     Call<Void> fazerCadastro(@Body CadastroRequest request);
 
 }
