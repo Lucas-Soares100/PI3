@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.errornull_proximaetapa.app-mergeDebugResources-28:/values-small-v4/values-small-v4.xml",
+            "outputFile": "com.example.errornull_proximaetapa.app-mergeDebugResources-31:/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\PICHAU\\.gradle\\caches\\9.7.1\\transforms\\281627ffc91a4dd2eab4cf57266bfef8\\transformed\\material-1.10.0\\res\\values-small-v4\\values-small-v4.xml",
+                    "source": "C:\\Users\\25028171\\.gradle\\caches\\9.7.1\\transforms\\ec9f1bb4c48de76ba70a23ef6808cfff\\transformed\\material-1.10.0\\res\\values-small-v4\\values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

@@ -20,6 +20,8 @@ id btnC1
 id btnC2
 id btnC3
 id btnVoltar
+id btn_ir_cadastro
+id btn_ir_login
 id button
 id cadastrar
 id cidade
