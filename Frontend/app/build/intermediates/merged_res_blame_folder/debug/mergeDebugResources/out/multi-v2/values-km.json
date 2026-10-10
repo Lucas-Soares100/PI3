@@ -4,7 +4,7 @@
             "outputFile": "com.example.errornull_proximaetapa.app-mergeDebugResources-28:/values-km/values-km.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\PICHAU\\.gradle\\caches\\9.7.1\\transforms\\e1d6f3c1a7aac0cd2d5e7e42ab946163\\transformed\\appcompat-1.6.1\\res\\values-km\\values-km.xml",
+                    "source": "C:\\Users\\PICHAU\\.gradle\\caches\\9.1.0\\transforms\\5b67104fc1c05c6581bbea8c6db355bf\\workspace\\transformed\\appcompat-1.6.1\\res\\values-km\\values-km.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\PICHAU\\.gradle\\caches\\9.7.1\\transforms\\281627ffc91a4dd2eab4cf57266bfef8\\transformed\\material-1.10.0\\res\\values-km\\values-km.xml",
+                    "source": "C:\\Users\\PICHAU\\.gradle\\caches\\9.1.0\\transforms\\74781ca2538773ed29f5ad277e68c8a6\\workspace\\transformed\\material-1.10.0\\res\\values-km\\values-km.xml",
                     "from": {
                         "startLines": "2,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -40,7 +40,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\PICHAU\\.gradle\\caches\\9.7.1\\transforms\\917d031c8eb11ccc685c44ab7c6d2dbe\\transformed\\core-1.9.0\\res\\values-km\\values-km.xml",
+                    "source": "C:\\Users\\PICHAU\\.gradle\\caches\\9.1.0\\transforms\\d51a09a200588e1d23140768deb74c0a\\workspace\\transformed\\core-1.9.0\\res\\values-km\\values-km.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

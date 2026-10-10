@@ -44,7 +44,7 @@ public class Cadastro extends AppCompatActivity {
         cadastro = findViewById(R.id.cadastrar);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                .baseUrl("https://pi3-kc5f.onrender.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -88,6 +88,15 @@ public class Cadastro extends AppCompatActivity {
                         Log.e("API_ERRO", "Falha no cadastro: " + t.getMessage());
                     }
                 });
+            }
+        });
+
+        Button btnIrLogin = findViewById(R.id.btn_ir_login);
+        btnIrLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Cadastro.this, LoginInfo.class);
+                startActivity(intent);
             }
         });
     }

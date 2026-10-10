@@ -3155,6 +3155,8 @@ int id btnC1 0x7f080064
 int id btnC2 0x7f080065
 int id btnC3 0x7f080066
 int id btnVoltar 0x7f080067
+int id btn_ir_cadastro 0x7f08020b
+int id btn_ir_login 0x7f08020c
 int id button 0x7f080068
 int id buttonPanel 0x7f080069
 int id cache_measures 0x7f08006a

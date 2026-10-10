@@ -4,7 +4,17 @@
             "outputFile": "com.example.errornull_proximaetapa.app-mergeDebugResources-28:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\PICHAU\\.gradle\\caches\\9.7.1\\transforms\\e1d6f3c1a7aac0cd2d5e7e42ab946163\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\PICHAU\\.gradle\\caches\\9.1.0\\transforms\\d51a09a200588e1d23140768deb74c0a\\workspace\\transformed\\core-1.9.0\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\PICHAU\\.gradle\\caches\\9.1.0\\transforms\\5b67104fc1c05c6581bbea8c6db355bf\\workspace\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -20,16 +30,6 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\PICHAU\\.gradle\\caches\\9.7.1\\transforms\\917d031c8eb11ccc685c44ab7c6d2dbe\\transformed\\core-1.9.0\\res\\values-v16\\values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
                     }
                 }
             ]
