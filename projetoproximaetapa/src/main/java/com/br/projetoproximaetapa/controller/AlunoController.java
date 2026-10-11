@@ -29,20 +29,21 @@ public class AlunoController {
     private IAluno dao;
 
     @GetMapping
-    public List<Aluno> listaAlunos() {
-        return (List<Aluno>) dao.findAll();
+    public ResponseEntity<List<Aluno>> listaAlunos() {
+        List<Aluno> listaalunos = (List<Aluno>) dao.findAll();
+        return ResponseEntity.status(200).body(listaalunos);
     }
     
     @GetMapping ("/{id}")
-    public Optional<Aluno> buscarAluno(@PathVariable Integer id) {
-        Optional<Aluno> aluno = dao.findById(id);
-        return aluno;
+    public ResponseEntity<?>buscarAluno(@PathVariable Integer id) {
+        dao.findById(id);
+        return ResponseEntity.status(200).build();
     }
 
     @PostMapping("/cadastrar") 
-    public Aluno cadastrarAluno(@RequestBody Aluno aluno) {
+    public ResponseEntity<Aluno> cadastrarAluno(@RequestBody Aluno aluno) {
         Aluno alunoNovo = dao.save(aluno);
-        return alunoNovo;
+        return ResponseEntity.status(201).body(alunoNovo);
     }
 
     @PostMapping("/login")
@@ -58,16 +59,15 @@ public class AlunoController {
     }
 
     @PutMapping
-    public Aluno atualizarAluno(@RequestBody Aluno aluno) {
+    public ResponseEntity<Aluno> atualizarAluno(@RequestBody Aluno aluno) {
         Aluno alunoAtualizado = dao.save(aluno);
-        return alunoAtualizado;
+        return ResponseEntity.status(201).body(alunoAtualizado);
     }
 
     @DeleteMapping("/{id}")
-    public Optional<Aluno> deletarAluno(@PathVariable Integer id) {
-        Optional<Aluno> aluno = dao.findById(id);
+    public ResponseEntity<?> deletarAluno(@PathVariable Integer id) {
         dao.deleteById(id);
-        return aluno;
+        return ResponseEntity.status(204).build();
     }
 
 }
