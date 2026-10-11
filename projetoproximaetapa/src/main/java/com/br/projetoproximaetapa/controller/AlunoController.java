@@ -35,9 +35,9 @@ public class AlunoController {
     }
     
     @GetMapping ("/{id}")
-    public ResponseEntity<?>buscarAluno(@PathVariable Integer id) {
-        dao.findById(id);
-        return ResponseEntity.status(200).build();
+    public ResponseEntity<Optional<Aluno>> buscarAluno(@PathVariable Integer id) {
+        Optional<Aluno> aluno = dao.findById(id);
+        return ResponseEntity.status(200).body(aluno);
     }
 
     @PostMapping("/cadastrar") 
