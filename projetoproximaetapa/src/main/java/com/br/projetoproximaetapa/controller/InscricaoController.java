@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.br.projetoproximaetapa.DAO.IInscricao;
 import com.br.projetoproximaetapa.model.Inscricao;
+import com.br.projetoproximaetapa.repository.IInscricao;
 
 @RestController
 @CrossOrigin("*")

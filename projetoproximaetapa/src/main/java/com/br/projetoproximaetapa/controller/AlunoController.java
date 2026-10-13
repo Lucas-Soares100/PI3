@@ -1,10 +1,8 @@
 package com.br.projetoproximaetapa.controller;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+//import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,37 +14,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.br.projetoproximaetapa.DAO.IAluno;
 import com.br.projetoproximaetapa.model.Aluno;
-import com.br.projetoproximaetapa.model.LoginRequest;
+//import com.br.projetoproximaetapa.model.LoginRequest;
+import com.br.projetoproximaetapa.service.AlunoService;
 
 @RestController
 @CrossOrigin ("*")
 @RequestMapping ("/alunos")
 public class AlunoController {
 
-    @Autowired
-    private IAluno dao;
+    private AlunoService alunoService;
+
+    public AlunoController(AlunoService alunoService) {
+        this.alunoService = alunoService;
+    }
 
     @GetMapping
     public ResponseEntity<List<Aluno>> listaAlunos() {
-        List<Aluno> listaalunos = (List<Aluno>) dao.findAll();
-        return ResponseEntity.status(200).body(listaalunos);
+        return ResponseEntity.status(200).body(alunoService.listarAlunos());
     }
     
     @GetMapping ("/{id}")
-    public ResponseEntity<Optional<Aluno>> buscarAluno(@PathVariable Integer id) {
-        Optional<Aluno> aluno = dao.findById(id);
-        return ResponseEntity.status(200).body(aluno);
+    public ResponseEntity<Aluno> buscarAluno(@PathVariable Integer id) {
+        return ResponseEntity.status(200).body(alunoService.buscarAlunoPorId(id));
     }
-
-    @PostMapping("/cadastrar") 
+    
+    @PostMapping
     public ResponseEntity<Aluno> cadastrarAluno(@RequestBody Aluno aluno) {
-        Aluno alunoNovo = dao.save(aluno);
-        return ResponseEntity.status(201).body(alunoNovo);
+        return ResponseEntity.status(201).body(alunoService.cadastrarAluno(aluno));
     }
 
-    @PostMapping("/login")
+    /*@PostMapping("/login")
     public ResponseEntity<Aluno> fazerLogin(@RequestBody LoginRequest loginRequest) {
     
         Aluno alunoEncontrado = dao.findByNomeAlunoAndSenha(loginRequest.getNome_aluno(), loginRequest.getSenha());
@@ -56,17 +54,16 @@ public class AlunoController {
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); 
         }
-    }
+    }*/
 
     @PutMapping
     public ResponseEntity<Aluno> atualizarAluno(@RequestBody Aluno aluno) {
-        Aluno alunoAtualizado = dao.save(aluno);
-        return ResponseEntity.status(201).body(alunoAtualizado);
+        return ResponseEntity.status(200).body(alunoService.atualizarAluno(aluno));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletarAluno(@PathVariable Integer id) {
-        dao.deleteById(id);
+        alunoService.deletarAluno(id);
         return ResponseEntity.status(204).build();
     }
 
