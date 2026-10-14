@@ -1,56 +1,45 @@
 package com.br.projetoproximaetapa.controller;
 
 import java.util.List;
-import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import com.br.projetoproximaetapa.model.Inscricao;
-import com.br.projetoproximaetapa.repository.IInscricao;
+import com.br.projetoproximaetapa.service.InscricaoService;
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/inscricoes")
 public class InscricaoController {
 
-    @Autowired
-    private IInscricao dao;
+    private final InscricaoService inscricaoService;
+
+    public InscricaoController(InscricaoService inscricaoService) {
+        this.inscricaoService = inscricaoService;
+    }
 
     @GetMapping
-    public List<Inscricao> listaInscricoes() {
-        return (List<Inscricao>) dao.findAll();
+    public ResponseEntity<List<Inscricao>> listarInscricoes() {
+        return ResponseEntity.status(200).body(inscricaoService.listarInscricoes());
     }
 
     @GetMapping("/{id}")
-    public Optional<Inscricao> buscarInscricao(@PathVariable Integer id) {
-        Optional<Inscricao> inscricao = dao.findById(id);
-        return inscricao;
+    public ResponseEntity<Inscricao> buscarInscricao(@PathVariable Integer id) {
+        return ResponseEntity.status(200).body(inscricaoService.buscarInscricaoPorId(id));
     }
 
     @PostMapping
-    public Inscricao cadastrarInscricao(@RequestBody Inscricao inscricao) {
-        Inscricao inscricaoNova = dao.save(inscricao);
-        return inscricaoNova;
+    public ResponseEntity<Inscricao> cadastrarInscricao(@RequestBody Inscricao inscricao) {
+        return ResponseEntity.status(201).body(inscricaoService.cadastrarInscricao(inscricao));
     }
 
     @PutMapping
-    public Inscricao atualizarInscricao(@RequestBody Inscricao inscricao) {
-        Inscricao inscricaoAtualizada = dao.save(inscricao);
-        return inscricaoAtualizada;
+    public ResponseEntity<Inscricao> atualizarInscricao(@RequestBody Inscricao inscricao) {
+        return ResponseEntity.status(200).body(inscricaoService.atualizarInscricao(inscricao));
     }
 
     @DeleteMapping("/{id}")
-    public Optional<Inscricao> deletarInscricao(@PathVariable Integer id) {
-        Optional<Inscricao> inscricao = dao.findById(id);
-        dao.deleteById(id);
-        return inscricao;
+    public ResponseEntity<?> deletarInscricao(@PathVariable Integer id) {
+        inscricaoService.deletarInscricao(id);
+        return ResponseEntity.status(204).build();
     }
 }

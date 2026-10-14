@@ -1,13 +1,6 @@
 package com.br.projetoproximaetapa.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,63 +10,68 @@ public class Inscricao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_inscricao")
-    private int id_inscricao;
+    private Integer idInscricao;
 
-    @ManyToOne
-    @JoinColumn(name = "id_aluno", nullable = false)
-    private Aluno aluno;
+    @Column(name = "cpf_aluno", length = 11, nullable = false)
+    private String cpfAluno;
 
-    @ManyToOne
-    @JoinColumn(name = "id_curso", nullable = false)
-    private Curso curso;
+    @Column(name = "id_curso", nullable = false)
+    private Integer idCurso;
+
+    @Column(name = "cpf_professor", length = 11)
+    private String cpfProfessor;
+
+    @Column(name = "qr_code", length = 36, nullable = false, unique = true, updatable = false)
+    private String qrCode;
 
     @Column(name = "status_inscricao", length = 20, nullable = false)
-    private String status_inscricao = "enrolled";
+    private String statusInscricao = "enrolled";
 
     @Column(name = "data_inscricao", nullable = false, updatable = false)
-    private LocalDateTime data_inscricao;
+    private LocalDateTime dataInscricao = LocalDateTime.now();
 
-    public Inscricao() {
-        this.data_inscricao = LocalDateTime.now();
+    public Inscricao() {}
+
+    public Integer getIdInscricao() { 
+        return idInscricao; 
     }
-
-    public int getId_inscricao() {
-        return id_inscricao;
+    public void setIdInscricao(Integer idInscricao) { 
+        this.idInscricao = idInscricao; 
     }
-
-    public void setId_inscricao(int id_inscricao) {
-        this.id_inscricao = id_inscricao;
+    public String getCpfAluno() { 
+        return cpfAluno; 
     }
-
-    public Aluno getAluno() {
-        return aluno;
+    public void setCpfAluno(String cpfAluno) { 
+        this.cpfAluno = cpfAluno; 
     }
-
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    public Integer getIdCurso() { 
+        return idCurso; 
     }
-
-    public Curso getCurso() {
-        return curso;
+    public void setIdCurso(Integer idCurso) { 
+        this.idCurso = idCurso; 
     }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
+    public String getCpfProfessor() { 
+        return cpfProfessor; 
     }
-
-    public String getStatus_inscricao() {
-        return status_inscricao;
+    public void setCpfProfessor(String cpfProfessor) { 
+        this.cpfProfessor = cpfProfessor; 
     }
-
-    public void setStatus_inscricao(String status_inscricao) {
-        this.status_inscricao = status_inscricao;
+    public String getQrCode() { 
+        return qrCode; 
     }
-
-    public LocalDateTime getData_inscricao() {
-        return data_inscricao;
+    public void setQrCode(String qrCode) { 
+        this.qrCode = qrCode; 
     }
-
-    public void setData_inscricao(LocalDateTime data_inscricao) {
-        this.data_inscricao = data_inscricao;
+    public String getStatusInscricao() { 
+        return statusInscricao; 
+    }
+    public void setStatusInscricao(String statusInscricao) { 
+        this.statusInscricao = statusInscricao; 
+    }
+    public LocalDateTime getDataInscricao() { 
+        return dataInscricao; 
+    }
+    public void setDataInscricao(LocalDateTime dataInscricao) { 
+        this.dataInscricao = dataInscricao; 
     }
 }

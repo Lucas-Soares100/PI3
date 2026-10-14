@@ -1,56 +1,45 @@
 package com.br.projetoproximaetapa.controller;
 
 import java.util.List;
-import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import com.br.projetoproximaetapa.model.Universidade;
-import com.br.projetoproximaetapa.repository.IUniversidade;
+import com.br.projetoproximaetapa.service.UniversidadeService;
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/universidades")
 public class UniversidadeController {
 
-    @Autowired
-    private IUniversidade dao;
+    private final UniversidadeService universidadeService;
+
+    public UniversidadeController(UniversidadeService universidadeService) {
+        this.universidadeService = universidadeService;
+    }
 
     @GetMapping
-    public List<Universidade> listaUniversidades() {
-        return (List<Universidade>) dao.findAll();
+    public ResponseEntity<List<Universidade>> listarUniversidades() {
+        return ResponseEntity.status(200).body(universidadeService.listarUniversidades());
     }
 
     @GetMapping("/{id}")
-    public Optional<Universidade> buscarUniversidade(@PathVariable Integer id) {
-        Optional<Universidade> universidade = dao.findById(id);
-        return universidade;
+    public ResponseEntity<Universidade> buscarUniversidade(@PathVariable Integer id) {
+        return ResponseEntity.status(200).body(universidadeService.buscarUniversidadePorId(id));
     }
 
     @PostMapping
-    public Universidade cadastrarUniversidade(@RequestBody Universidade universidade) {
-        Universidade universidadeNova = dao.save(universidade);
-        return universidadeNova;
+    public ResponseEntity<Universidade> cadastrarUniversidade(@RequestBody Universidade universidade) {
+        return ResponseEntity.status(201).body(universidadeService.cadastrarUniversidade(universidade));
     }
 
     @PutMapping
-    public Universidade atualizarUniversidade(@RequestBody Universidade universidade) {
-        Universidade universidadeAtualizada = dao.save(universidade);
-        return universidadeAtualizada;
+    public ResponseEntity<Universidade> atualizarUniversidade(@RequestBody Universidade universidade) {
+        return ResponseEntity.status(200).body(universidadeService.atualizarUniversidade(universidade));
     }
 
     @DeleteMapping("/{id}")
-    public Optional<Universidade> deletarUniversidade(@PathVariable Integer id) {
-        Optional<Universidade> universidade = dao.findById(id);
-        dao.deleteById(id);
-        return universidade;
+    public ResponseEntity<?> deletarUniversidade(@PathVariable Integer id) {
+        universidadeService.deletarUniversidade(id);
+        return ResponseEntity.status(204).build();
     }
 }

@@ -1,58 +1,44 @@
 package com.br.projetoproximaetapa.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table (name = "Aluno") 
+@Table(name = "Aluno")
 public class Aluno {
-	
-	@Id		//Define o id como chave primária
-	@Column(name = "cpf")	//Define o nome da coluna que será ID
-	private int cpf;
 
-	@Column(name = "nome_aluno", length = 150, nullable = false)	//Define o nome da coluna que será Nome
-	private String nome_aluno;
-	
-	@Column(name = "telefone_aluno", length = 20)	//Define o nome da coluna que será Telefone
-	private String telefone_aluno;
-	
-	@Column(name = "escola", length = 150)	//Define o nome da coluna que será Escola
-	private String escola;
-	
-	@Column(name = "cidade", length = 150)	//Define o nome da coluna que será Cidade
-	private String cidade;
-	
-	@Column(name = "grade", length = 20)	//Define o nome da coluna que será Grade
-	private String grade;
-	
-	@Column(name = "senha", columnDefinition = "TEXT", nullable = false)
-private String senha;
+    @Id
+    @Column(name = "cpf", length = 11)
+    private String cpf;
+
+    @Column(name = "telefone_aluno", length = 20, nullable = false)
+    private String telefoneAluno;
+
+    @Column(name = "escola", length = 150, nullable = false)
+    private String escola;
+
+    @Column(name = "cidade", length = 100, nullable = false)
+    private String cidade;
+
+    @Column(name = "grade", length = 20, nullable = false)
+    private String grade;
 
 
 	public Aluno(){
 	}
 	
 	
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public String getNome_aluno() {
-		return nome_aluno;
-	}
-	public void setNome_aluno(String nome_aluno) {
-		this.nome_aluno = nome_aluno;
-	}
+	
 	public String getTelefone_aluno() {
-		return telefone_aluno;
+		return telefoneAluno;
 	}
-	public void setTelefone_aluno(String telefone_aluno) {
-		this.telefone_aluno = telefone_aluno;
+	public void setTelefone_aluno(String telefoneAluno) {
+		this.telefoneAluno = telefoneAluno;
 	}
 	public String getEscola() {
 		return escola;
@@ -72,14 +58,4 @@ private String senha;
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
 }

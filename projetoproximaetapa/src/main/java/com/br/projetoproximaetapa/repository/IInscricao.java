@@ -1,7 +1,7 @@
 package com.br.projetoproximaetapa.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import com.br.projetoproximaetapa.model.Inscricao;
 
-public interface IInscricao extends CrudRepository<Inscricao, Integer> {
+public interface IInscricao extends JpaRepository<Inscricao, Integer> {
 }

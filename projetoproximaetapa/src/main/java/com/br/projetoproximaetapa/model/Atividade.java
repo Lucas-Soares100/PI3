@@ -1,12 +1,7 @@
 package com.br.projetoproximaetapa.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import java.sql.Date;
+import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Atividade")
@@ -15,38 +10,32 @@ public class Atividade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_atividade")
-    private int id_atividade;
+    private Integer idAtividade;
 
     @Column(name = "nome_atividade", length = 150, nullable = false)
-    private String nome_atividade;
+    private String nomeAtividade;
 
     @Column(name = "data_atividade")
-    private Date data_atividade;
+    private LocalDate dataAtividade;
 
-    public Atividade() {
+    public Atividade() {}
+
+    public Integer getIdAtividade() { 
+        return idAtividade; 
     }
-
-    public int getId_atividade() {
-        return id_atividade;
+    public void setIdAtividade(Integer idAtividade) { 
+        this.idAtividade = idAtividade; 
     }
-
-    public void setId_atividade(int id_atividade) {
-        this.id_atividade = id_atividade;
+    public String getNomeAtividade() { 
+        return nomeAtividade; 
     }
-
-    public String getNome_atividade() {
-        return nome_atividade;
+    public void setNomeAtividade(String nomeAtividade) { 
+        this.nomeAtividade = nomeAtividade; 
     }
-
-    public void setNome_atividade(String nome_atividade) {
-        this.nome_atividade = nome_atividade;
+    public LocalDate getDataAtividade() { 
+        return dataAtividade; 
     }
-
-    public Date getData_atividade() {
-        return data_atividade;
-    }
-
-    public void setData_atividade(Date data_atividade) {
-        this.data_atividade = data_atividade;
+    public void setDataAtividade(LocalDate dataAtividade) { 
+        this.dataAtividade = dataAtividade; 
     }
 }

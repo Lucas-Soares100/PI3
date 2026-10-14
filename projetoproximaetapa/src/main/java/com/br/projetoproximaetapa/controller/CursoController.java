@@ -1,56 +1,45 @@
 package com.br.projetoproximaetapa.controller;
 
 import java.util.List;
-import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import com.br.projetoproximaetapa.model.Curso;
-import com.br.projetoproximaetapa.repository.ICurso;
+import com.br.projetoproximaetapa.service.CursoService;
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/cursos")
 public class CursoController {
 
-    @Autowired
-    private ICurso dao;
+    private final CursoService cursoService;
+
+    public CursoController(CursoService cursoService) {
+        this.cursoService = cursoService;
+    }
 
     @GetMapping
-    public List<Curso> listaCursos() {
-        return (List<Curso>) dao.findAll();
+    public ResponseEntity<List<Curso>> listarCursos() {
+        return ResponseEntity.status(200).body(cursoService.listarCursos());
     }
 
     @GetMapping("/{id}")
-    public Optional<Curso> buscarCurso(@PathVariable Integer id) {
-        Optional<Curso> curso = dao.findById(id);
-        return curso;
+    public ResponseEntity<Curso> buscarCurso(@PathVariable Integer id) {
+        return ResponseEntity.status(200).body(cursoService.buscarCursoPorId(id));
     }
 
     @PostMapping
-    public Curso cadastrarCurso(@RequestBody Curso curso) {
-        Curso cursoNovo = dao.save(curso);
-        return cursoNovo;
+    public ResponseEntity<Curso> cadastrarCurso(@RequestBody Curso curso) {
+        return ResponseEntity.status(201).body(cursoService.cadastrarCurso(curso));
     }
 
     @PutMapping
-    public Curso atualizarCurso(@RequestBody Curso curso) {
-        Curso cursoAtualizado = dao.save(curso);
-        return cursoAtualizado;
+    public ResponseEntity<Curso> atualizarCurso(@RequestBody Curso curso) {
+        return ResponseEntity.status(200).body(cursoService.atualizarCurso(curso));
     }
 
     @DeleteMapping("/{id}")
-    public Optional<Curso> deletarCurso(@PathVariable Integer id) {
-        Optional<Curso> curso = dao.findById(id);
-        dao.deleteById(id);
-        return curso;
+    public ResponseEntity<?> deletarCurso(@PathVariable Integer id) {
+        cursoService.deletarCurso(id);
+        return ResponseEntity.status(204).build();
     }
 }
