@@ -2,8 +2,6 @@ package com.br.projetoproximaetapa.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -12,9 +10,8 @@ import jakarta.persistence.Table;
 public class Aluno {
 	
 	@Id		//Define o id como chave primária
-	@GeneratedValue (strategy = GenerationType.IDENTITY)	//Faz com que seja Autoincremento
-	@Column(name = "id_aluno")	//Define o nome da coluna que será ID
-	private int id_aluno;
+	@Column(name = "cpf")	//Define o nome da coluna que será ID
+	private int cpf;
 
 	@Column(name = "nome_aluno", length = 150, nullable = false)	//Define o nome da coluna que será Nome
 	private String nome_aluno;
@@ -39,11 +36,11 @@ private String senha;
 	}
 	
 	
-	public int getId_aluno() {
-		return id_aluno;
+	public int getCpf() {
+		return cpf;
 	}
-	public void setId_aluno(int id_aluno) {
-		this.id_aluno = id_aluno;
+	public void setCpf(int cpf) {
+		this.cpf = cpf;
 	}
 	public String getNome_aluno() {
 		return nome_aluno;

@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginInfo extends AppCompatActivity {
 
-    private EditText entradaNome;
+    private EditText entradaEmail;
     private EditText entradaPassword;
     private Button botaoConfirmar;
     private ApiService api;
@@ -30,7 +30,7 @@ public class LoginInfo extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.tela_login);
 
-        entradaNome = findViewById(R.id.entrada_nome);
+        entradaEmail = findViewById(R.id.entrada_email);
         entradaPassword = findViewById(R.id.entrada_password);
         botaoConfirmar = findViewById(R.id.button);
 
@@ -44,7 +44,7 @@ public class LoginInfo extends AppCompatActivity {
         botaoConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String loginDigitado = entradaNome.getText().toString();
+                String loginDigitado = entradaEmail.getText().toString();
                 String senhaDigitada = entradaPassword.getText().toString();
 
                 if(loginDigitado.isEmpty() || senhaDigitada.isEmpty()) {
