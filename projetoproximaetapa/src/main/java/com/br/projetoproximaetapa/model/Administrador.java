@@ -1,6 +1,9 @@
 package com.br.projetoproximaetapa.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
+@Data 
 
 @Entity
 @Table(name = "Administrador")
@@ -12,19 +15,4 @@ public class Administrador {
 
     @Column(name = "cargo", length = 100, nullable = false)
     private String cargo;
-
-    public Administrador() {}
-
-    public String getCpf() { 
-        return cpf; 
-    }
-    public void setCpf(String cpf) { 
-        this.cpf = cpf; 
-    }
-    public String getCargo() { 
-        return cargo; 
-    }
-    public void setCargo(String cargo) { 
-        this.cargo = cargo; 
-    }
 }

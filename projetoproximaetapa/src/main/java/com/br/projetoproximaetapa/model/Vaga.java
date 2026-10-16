@@ -3,6 +3,10 @@ package com.br.projetoproximaetapa.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+import lombok.Data;
+
+@Data 
+
 @Entity
 @Table(name = "Vaga")
 public class Vaga {
@@ -29,55 +33,4 @@ public class Vaga {
 
     @Column(name = "data_publicacao", nullable = false)
     private LocalDateTime dataPublicacao = LocalDateTime.now();
-
-    public Vaga() {}
-
-    public Integer getIdVaga() { 
-        return idVaga; 
-    }
-    public void setIdVaga(Integer idVaga) { 
-        this.idVaga = idVaga; 
-    }
-
-    public String getCpfAdmin() { 
-        return cpfAdmin; 
-    }
-    public void setCpfAdmin(String cpfAdmin) { 
-        this.cpfAdmin = cpfAdmin; 
-    }
-
-    public String getTitulo() { 
-        return titulo; 
-    }
-    public void setTitulo(String titulo) { 
-        this.titulo = titulo; 
-    }
-
-    public String getEmpresa() { 
-        return empresa; 
-    }
-    public void setEmpresa(String empresa) { 
-        this.empresa = empresa; 
-    }
-
-    public String getDescricao() { 
-        return descricao; 
-    }
-    public void setDescricao(String descricao) { 
-        this.descricao = descricao; 
-    }
-
-    public String getLinkExterno() { 
-        return linkExterno; 
-    }
-    public void setLinkExterno(String linkExterno) { 
-        this.linkExterno = linkExterno; 
-    }
-
-    public LocalDateTime getDataPublicacao() { 
-        return dataPublicacao; 
-    }
-    public void setDataPublicacao(LocalDateTime dataPublicacao) { 
-        this.dataPublicacao = dataPublicacao; 
-    }
 }

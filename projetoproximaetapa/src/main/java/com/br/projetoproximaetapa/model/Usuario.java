@@ -2,6 +2,9 @@ package com.br.projetoproximaetapa.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import lombok.Data;
+
+@Data 
 
 @Entity
 @Table(name = "Usuario")
@@ -26,42 +29,6 @@ public class Usuario {
     @Column(name = "data_cadastro", nullable = false, updatable = false)
     private LocalDateTime dataCadastro = LocalDateTime.now();
 
-    public Usuario() {}
 
-    public String getCpf() { 
-        return cpf; 
-    }
-    public void setCpf(String cpf) { 
-        this.cpf = cpf; 
-    }
-    public String getNome() { 
-        return nome; 
-    }
-    public void setNome(String nome) { 
-        this.nome = nome; 
-    }
-    public String getEmail() { 
-        return email; 
-    }
-    public void setEmail(String email) { 
-        this.email = email; 
-    }
-    public String getSenhaHash() { 
-        return senhaHash; 
-    }
-    public void setSenhaHash(String senhaHash) { 
-        this.senhaHash = senhaHash; 
-    }
-    public String getTipoUsuario() { 
-        return tipoUsuario; 
-    }
-    public void setTipoUsuario(String tipoUsuario) { 
-        this.tipoUsuario = tipoUsuario; 
-    }
-    public LocalDateTime getDataCadastro() { 
-        return dataCadastro; 
-    }
-    public void setDataCadastro(LocalDateTime dataCadastro) { 
-        this.dataCadastro = dataCadastro; 
-    }
+    
 }

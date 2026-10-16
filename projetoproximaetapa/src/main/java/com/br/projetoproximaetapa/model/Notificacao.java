@@ -2,6 +2,9 @@ package com.br.projetoproximaetapa.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import lombok.Data;
+
+@Data 
 
 @Entity
 @Table(name = "Notificacao")
@@ -29,55 +32,4 @@ public class Notificacao {
 
     @Column(name = "data_criacao", nullable = false)
     private LocalDateTime dataCriacao = LocalDateTime.now();
-
-    public Notificacao() {}
-
-    public Integer getIdNotificacao() { 
-        return idNotificacao; 
-    }
-    public void setIdNotificacao(Integer idNotificacao) { 
-        this.idNotificacao = idNotificacao; 
-    }
-
-    public String getCpfUsuario() { 
-        return cpfUsuario; 
-    }
-    public void setCpfUsuario(String cpfUsuario) { 
-        this.cpfUsuario = cpfUsuario; 
-    }
-
-    public String getTitulo() { 
-        return titulo; 
-    }
-    public void setTitulo(String titulo) { 
-        this.titulo = titulo; 
-    }
-
-    public String getMensagem() { 
-        return mensagem; 
-    }
-    public void setMensagem(String mensagem) { 
-        this.mensagem = mensagem; 
-    }
-
-    public String getTipo() { 
-        return tipo; 
-    }
-    public void setTipo(String tipo) { 
-        this.tipo = tipo; 
-    }
-
-    public Boolean getLida() { 
-        return lida; 
-    }
-    public void setLida(Boolean lida) { 
-        this.lida = lida; 
-    }
-
-    public LocalDateTime getDataCriacao() { 
-        return dataCriacao; 
-    }
-    public void setDataCriacao(LocalDateTime dataCriacao) { 
-        this.dataCriacao = dataCriacao; 
-    }
 }

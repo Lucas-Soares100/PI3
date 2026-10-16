@@ -1,6 +1,9 @@
 package com.br.projetoproximaetapa.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
+@Data 
 
 @Entity
 @Table(name = "Professor")
@@ -15,19 +18,4 @@ public class Professor {
 
     @Column(name = "especialidade", length = 150, nullable = false)
     private String especialidade;
-
-    public Professor() {}
-
-    public String getCpf() { 
-        return cpf; }
-    public void setCpf(String cpf) { 
-        this.cpf = cpf; }
-    public String getTelefoneProfessor() { 
-        return telefoneProfessor; }
-    public void setTelefoneProfessor(String telefoneProfessor) { 
-        this.telefoneProfessor = telefoneProfessor; }
-    public String getEspecialidade() { 
-        return especialidade; }
-    public void setEspecialidade(String especialidade) { 
-        this.especialidade = especialidade; }
 }

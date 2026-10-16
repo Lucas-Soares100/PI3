@@ -2,6 +2,9 @@ package com.br.projetoproximaetapa.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import lombok.Data;
+
+@Data 
 
 @Entity
 @Table(name = "Encontro")
@@ -23,39 +26,4 @@ public class Encontro {
 
     @Column(name = "codigo", length = 30, unique = true)
     private String codigo;
-
-    public Encontro() {}
-
-    public Integer getIdEncontro() { 
-        return idEncontro; 
-    }
-    public void setIdEncontro(Integer idEncontro) { 
-        this.idEncontro = idEncontro; 
-    }
-    public Integer getIdCurso() { 
-        return idCurso; 
-
-    }
-    public void setIdCurso(Integer idCurso) { 
-        this.idCurso = idCurso; 
-    }
-    public Integer getNumeroEncontro() { 
-        return numeroEncontro; 
-    }
-    public void setNumeroEncontro(Integer numeroEncontro) { 
-        this.numeroEncontro = numeroEncontro; 
-    }
-    public LocalDate getDataEncontro() { 
-        return dataEncontro; 
-    }
-    public void setDataEncontro(LocalDate dataEncontro) { 
-        this.dataEncontro = dataEncontro; 
-    }
-    public String getCodigo() { 
-        return codigo; 
-
-    }
-    public void setCodigo(String codigo) { 
-        this.codigo = codigo; 
-    }
 }

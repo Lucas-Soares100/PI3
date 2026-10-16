@@ -2,6 +2,9 @@ package com.br.projetoproximaetapa.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import lombok.Data;
+
+@Data 
 
 @Entity
 @Table(name = "Inscricao")
@@ -29,49 +32,4 @@ public class Inscricao {
 
     @Column(name = "data_inscricao", nullable = false, updatable = false)
     private LocalDateTime dataInscricao = LocalDateTime.now();
-
-    public Inscricao() {}
-
-    public Integer getIdInscricao() { 
-        return idInscricao; 
-    }
-    public void setIdInscricao(Integer idInscricao) { 
-        this.idInscricao = idInscricao; 
-    }
-    public String getCpfAluno() { 
-        return cpfAluno; 
-    }
-    public void setCpfAluno(String cpfAluno) { 
-        this.cpfAluno = cpfAluno; 
-    }
-    public Integer getIdCurso() { 
-        return idCurso; 
-    }
-    public void setIdCurso(Integer idCurso) { 
-        this.idCurso = idCurso; 
-    }
-    public String getCpfProfessor() { 
-        return cpfProfessor; 
-    }
-    public void setCpfProfessor(String cpfProfessor) { 
-        this.cpfProfessor = cpfProfessor; 
-    }
-    public String getQrCode() { 
-        return qrCode; 
-    }
-    public void setQrCode(String qrCode) { 
-        this.qrCode = qrCode; 
-    }
-    public String getStatusInscricao() { 
-        return statusInscricao; 
-    }
-    public void setStatusInscricao(String statusInscricao) { 
-        this.statusInscricao = statusInscricao; 
-    }
-    public LocalDateTime getDataInscricao() { 
-        return dataInscricao; 
-    }
-    public void setDataInscricao(LocalDateTime dataInscricao) { 
-        this.dataInscricao = dataInscricao; 
-    }
 }

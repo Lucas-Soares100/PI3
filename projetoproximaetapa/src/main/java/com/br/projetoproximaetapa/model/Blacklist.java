@@ -2,6 +2,9 @@ package com.br.projetoproximaetapa.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import lombok.Data;
+
+@Data 
 
 @Entity
 @Table(name = "Blacklist")
@@ -29,52 +32,4 @@ public class Blacklist {
 
     @Column(name = "data_fim", insertable = false, updatable = false)
     private LocalDateTime dataFim;
-
-    public Blacklist() {}
-
-    public Integer getIdBlacklist() { 
-        return idBlacklist; 
-    }
-    public void setIdBlacklist(Integer idBlacklist) { 
-        this.idBlacklist = idBlacklist; 
-    }
-
-    public String getCpfAluno() { 
-        return cpfAluno; 
-    }
-    public void setCpfAluno(String cpfAluno) { 
-        this.cpfAluno = cpfAluno; 
-    }
-
-    public String getCpfProfessor() { 
-        return cpfProfessor; 
-    }
-    public void setCpfProfessor(String cpfProfessor) { 
-        this.cpfProfessor = cpfProfessor; 
-    }
-
-    public String getMotivo() { 
-        return motivo; 
-    }
-    public void setMotivo(String motivo) { 
-        this.motivo = motivo; 
-    }
-
-    public Integer getDiasBloqueio() { 
-        return diasBloqueio; 
-    }
-    public void setDiasBloqueio(Integer diasBloqueio) { 
-        this.diasBloqueio = diasBloqueio; 
-    }
-
-    public LocalDateTime getDataInicio() { 
-        return dataInicio; 
-    }
-    public void setDataInicio(LocalDateTime dataInicio) { 
-        this.dataInicio = dataInicio; 
-    }
-
-    public LocalDateTime getDataFim() { 
-        return dataFim; 
-    }
 }
