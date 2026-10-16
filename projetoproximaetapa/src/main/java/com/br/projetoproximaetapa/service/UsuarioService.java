@@ -1,6 +1,9 @@
 package com.br.projetoproximaetapa.service;
 
 import java.util.List;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.br.projetoproximaetapa.model.Usuario;
 import com.br.projetoproximaetapa.repository.IUsuario;
@@ -9,9 +12,11 @@ import com.br.projetoproximaetapa.repository.IUsuario;
 public class UsuarioService {
 
     private final IUsuario usuarioRepository;
+    private PasswordEncoder passwordEncoder;
 
     public UsuarioService(IUsuario usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder(); // Inicializa o PasswordEncoder
     }
 
     public List<Usuario> listarUsuarios() {
@@ -23,15 +28,26 @@ public class UsuarioService {
     }
 
     public Usuario cadastrarUsuario(Usuario usuario) {
+        String encodedPassword = this.passwordEncoder.encode(usuario.getSenhaHash());
+        usuario.setSenhaHash(encodedPassword);
         return usuarioRepository.save(usuario);
     }
 
     public Usuario atualizarUsuario(Usuario usuario) {
+        String encodedPassword = this.passwordEncoder.encode(usuario.getSenhaHash());
+        usuario.setSenhaHash(encodedPassword);
         return usuarioRepository.save(usuario);
     }
 
     public Boolean deletarUsuario(String cpf) {
         usuarioRepository.deleteById(cpf);
         return true;
+    }
+
+    //criptografia de senha
+    public Boolean validarSenha(Usuario usuario) {
+        String senhaHash = usuarioRepository.getById(usuario.getCpf()).getSenhaHash();
+        Boolean senhaValida = this.passwordEncoder.matches(usuario.getSenhaHash(), senhaHash);
+        return senhaValida;
     }
 }
