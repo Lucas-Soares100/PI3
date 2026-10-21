@@ -5,8 +5,14 @@ import java.util.List;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.br.projetoproximaetapa.controller.UsuarioDto;
 import com.br.projetoproximaetapa.model.Usuario;
 import com.br.projetoproximaetapa.repository.IUsuario;
+import com.br.projetoproximaetapa.security.Token;
+import com.br.projetoproximaetapa.security.TokenUtil;
+
+import jakarta.validation.Valid;
 
 @Service
 public class UsuarioService {
@@ -49,5 +55,16 @@ public class UsuarioService {
         String senhaHash = usuarioRepository.findById(usuario.getCpf()).get().getSenhaHash();
         Boolean senhaValida = this.passwordEncoder.matches(usuario.getSenhaHash(), senhaHash);
         return senhaValida;
+    }
+
+    public Token gerarToken(@Valid UsuarioDto usuario) {
+        Usuario user = usuarioRepository.findByEmail((String) usuario.getEmail());
+        if (user !=null){
+            Boolean senhaValida = this.passwordEncoder.matches(usuario.getSenhaHash(), user.getSenhaHash());
+            if (senhaValida) {
+                return new Token(TokenUtil.createToken(user));
+            }
+        }
+        return null;
     }
 }

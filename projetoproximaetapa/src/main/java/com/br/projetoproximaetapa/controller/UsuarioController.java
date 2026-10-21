@@ -10,6 +10,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import com.br.projetoproximaetapa.model.Usuario;
+import com.br.projetoproximaetapa.security.Token;
 import com.br.projetoproximaetapa.service.UsuarioService;
 
 import jakarta.validation.Valid;
@@ -53,12 +54,12 @@ public class UsuarioController {
 
 //Login com criptografia de senha
     @PostMapping("/login")
-    public ResponseEntity<Usuario> validarSenha(@Valid @RequestBody Usuario usuario) {
-        Boolean senhaValida = usuarioService.validarSenha(usuario);
-        if (!senhaValida) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // Retorna 401 Unauthorized se a senha for inválida
+    public ResponseEntity<Token> logar(@Valid @RequestBody UsuarioDto usuario) {
+        Token token = usuarioService.gerarToken(usuario);
+        if (token != null) {
+            return ResponseEntity.ok(token); // Retorna 200 OK com o token se a senha for válida
         }
-        return ResponseEntity.status(200).build(); // Retorna 200 OK se a senha for válida
+        return ResponseEntity.status(403).build(); // Retorna 403 Forbidden
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

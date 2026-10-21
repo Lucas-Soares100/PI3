@@ -24,7 +24,7 @@ public class TokenUtil {
     private static final String SECRET_KEY = "7x#9P$2mK!4vR8@wL%1jH*6tY#3bZ&9f";
     private static final String EMISSOR = "DevNice";
 
-    private static String createToken(Usuario usuario){
+    public static String createToken(Usuario usuario){
         Key secretKey = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 
         String token = io.jsonwebtoken.Jwts.builder()
