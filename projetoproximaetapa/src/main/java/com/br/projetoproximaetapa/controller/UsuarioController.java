@@ -11,6 +11,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import com.br.projetoproximaetapa.model.Usuario;
 import com.br.projetoproximaetapa.security.Token;
+import com.br.projetoproximaetapa.dto.UsuarioDto;
 import com.br.projetoproximaetapa.service.UsuarioService;
 
 import jakarta.validation.Valid;

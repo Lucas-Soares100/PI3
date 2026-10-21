@@ -6,7 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.br.projetoproximaetapa.controller.UsuarioDto;
+import com.br.projetoproximaetapa.dto.UsuarioDto;
 import com.br.projetoproximaetapa.model.Usuario;
 import com.br.projetoproximaetapa.repository.IUsuario;
 import com.br.projetoproximaetapa.security.Token;
