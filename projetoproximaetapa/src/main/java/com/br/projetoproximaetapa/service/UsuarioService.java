@@ -46,7 +46,7 @@ public class UsuarioService {
 
     //criptografia de senha
     public Boolean validarSenha(Usuario usuario) {
-        String senhaHash = usuarioRepository.getById(usuario.getCpf()).getSenhaHash();
+        String senhaHash = usuarioRepository.findById(usuario.getCpf()).get().getSenhaHash();
         Boolean senhaValida = this.passwordEncoder.matches(usuario.getSenhaHash(), senhaHash);
         return senhaValida;
     }

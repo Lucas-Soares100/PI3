@@ -2,9 +2,9 @@ package com.br.projetoproximaetapa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.security.autoconfigure.SecurityAutoConfiguration;
+// import org.springframework.boot.security.autoconfigure.SecurityAutoConfiguration;
 
-@SpringBootApplication (exclude = {SecurityAutoConfiguration.class})
+@SpringBootApplication 
 public class ProjetoproximaetapaApplication {
 
 	public static void main(String[] args) {
