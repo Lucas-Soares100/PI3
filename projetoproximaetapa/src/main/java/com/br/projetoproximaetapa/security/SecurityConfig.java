@@ -10,7 +10,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfig {
 
-    // Podes injetar o teu filtro personalizado aqui quando o criarem
+    
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSec) throws Exception {
         System.out.println("SecurityConfig: Configurando segurança da aplicação...");
@@ -18,10 +18,10 @@ public class SecurityConfig {
         httpSec
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers(HttpMethod.GET, "/usuários").permitAll()
+                .requestMatchers(HttpMethod.GET, "/usuarios").permitAll()
                 .anyRequest().authenticated()
             )
-            // Equivalente moderno ao addFilterBefore do vídeo:
+            
             .addFilterBefore(new SecurityFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return httpSec.build();
