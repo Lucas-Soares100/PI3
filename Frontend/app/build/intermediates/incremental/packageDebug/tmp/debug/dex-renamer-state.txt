@@ -1,8 +1,8 @@
-#Fri Oct 09 23:20:17 GMT-03:00 2026
-base.0=C\:\\Users\\PICHAU\\OneDrive\\Documentos\\GitHub\\PI\\editarPI\\PI3\\Frontend\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\PICHAU\\OneDrive\\Documentos\\GitHub\\PI\\editarPI\\PI3\\Frontend\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\PICHAU\\OneDrive\\Documentos\\GitHub\\PI\\editarPI\\PI3\\Frontend\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\12\\classes.dex
-base.3=C\:\\Users\\PICHAU\\OneDrive\\Documentos\\GitHub\\PI\\editarPI\\PI3\\Frontend\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+#Thu Oct 22 20:46:32 BRT 2026
+base.0=C\:\\Users\\25028169\\Downloads\\Frontend\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\Users\\25028169\\Downloads\\Frontend\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=C\:\\Users\\25028169\\Downloads\\Frontend\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\12\\classes.dex
+base.3=C\:\\Users\\25028169\\Downloads\\Frontend\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=12/classes.dex
