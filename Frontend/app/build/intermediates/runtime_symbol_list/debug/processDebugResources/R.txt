@@ -3547,6 +3547,8 @@ int id telaPerfil 0x7f0801e7
 int id text 0x7f0801e8
 int id text2 0x7f0801e9
 int id textEnd 0x7f0801ea
+int id textInputLayoutEmail 0x7f080226
+int id textInputLayoutSenha 0x7f080227
 int id textSpacerNoButtons 0x7f0801eb
 int id textSpacerNoTitle 0x7f0801ec
 int id textStart 0x7f0801ed
@@ -3560,6 +3562,9 @@ int id textinput_helper_text 0x7f0801f4
 int id textinput_placeholder 0x7f0801f5
 int id textinput_prefix_text 0x7f0801f6
 int id textinput_suffix_text 0x7f0801f7
+int id tilCpf 0x7f080228
+int id tilEmail 0x7f080229
+int id tilNome 0x7f08022a
 int id time 0x7f0801f8
 int id title 0x7f0801f9
 int id titleDividerNoCustom 0x7f0801fa

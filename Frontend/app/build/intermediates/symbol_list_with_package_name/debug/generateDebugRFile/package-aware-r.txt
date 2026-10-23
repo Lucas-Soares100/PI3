@@ -68,6 +68,11 @@ id rb_aluno
 id rb_professor
 id rg_tipo_usuario
 id telaPerfil
+id textInputLayoutEmail
+id textInputLayoutSenha
+id tilCpf
+id tilEmail
+id tilNome
 id titulo
 id tvCadastro
 id tvLogin

@@ -47,55 +47,70 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Campo de E-mail -->
+    <!-- Campo de E-mail com Material Design -->
     <ImageView
         android:id="@+id/iconUser"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/input_email"
-        app:layout_constraintTop_toTopOf="@id/input_email"
-        app:layout_constraintBottom_toBottomOf="@id/input_email"
+        app:layout_constraintEnd_toStartOf="@id/textInputLayoutEmail"
+        app:layout_constraintTop_toTopOf="@id/textInputLayoutEmail"
+        app:layout_constraintBottom_toBottomOf="@id/textInputLayoutEmail"
         app:srcCompat="@drawable/usericon" />
 
-    <EditText
-        android:id="@+id/input_email"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:hint="Digite seu email aqui"
-        android:inputType="textEmailAddress"
-        android:textSize="15sp"
-        android:textColorHint="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/iconUser"
-        app:layout_constraintTop_toBottomOf="@id/tvLogin" />
+        app:layout_constraintTop_toBottomOf="@id/tvLogin">
 
-    <!-- Campo de Senha -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite seu email aqui"
+            android:inputType="textEmailAddress"
+            android:textSize="15sp"
+            android:textColorHint="@color/gray" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Campo de Senha com o Olhinho Nativo -->
     <ImageView
         android:id="@+id/iconLock"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/input_senha"
-        app:layout_constraintTop_toTopOf="@id/input_senha"
-        app:layout_constraintBottom_toBottomOf="@id/input_senha"
+        app:layout_constraintEnd_toStartOf="@id/textInputLayoutSenha"
+        app:layout_constraintTop_toTopOf="@id/textInputLayoutSenha"
+        app:layout_constraintBottom_toBottomOf="@id/textInputLayoutSenha"
         app:srcCompat="@drawable/lockicon" />
 
-    <EditText
-        android:id="@+id/input_senha"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutSenha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Digite sua senha aqui"
-        android:textSize="15sp"
-        android:inputType="textPassword"
-        android:textColorHint="@color/gray"
+        app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/iconLock"
-        app:layout_constraintTop_toBottomOf="@id/input_email" />
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmail">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite sua senha aqui"
+            android:inputType="textPassword"
+            android:textSize="15sp"
+            android:textColorHint="@color/gray" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Botão de Login -->
     <Button
@@ -108,7 +123,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_senha" />
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutSenha" />
 
     <TextView
         android:id="@+id/tvCadastro"
