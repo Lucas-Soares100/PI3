@@ -178,8 +178,20 @@ public class Cadastro extends AppCompatActivity {
                         startActivity(new Intent(Cadastro.this, LoginInfo.class));
                         finish();
                     } else {
-                        // Caso o back-end rejeite por duplicidade (CPF ou E-mail já existentes)
-                        Toast.makeText(Cadastro.this, "Erro: E-mail ou CPF já cadastrados no sistema!", Toast.LENGTH_LONG).show();
+                        // Tratamento inteligente de duplicidade vindo do Back-end
+                        try {
+                            String erroMsg = response.errorBody() != null ? response.errorBody().string() : "";
+                            
+                            if (erroMsg.contains("CPF")) {
+                                if (tilCpf != null) tilCpf.setError("Este CPF já está cadastrado!");
+                            } else if (erroMsg.contains("E-mail") || erroMsg.contains("email")) {
+                                if (tilEmail != null) tilEmail.setError("Este E-mail já está em uso!");
+                            } else {
+                                Toast.makeText(Cadastro.this, "Erro ao cadastrar. Verifique os dados.", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (Exception e) {
+                            Toast.makeText(Cadastro.this, "Erro: E-mail ou CPF já cadastrados no sistema!", Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
 
