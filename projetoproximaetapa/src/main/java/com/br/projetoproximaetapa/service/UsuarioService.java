@@ -55,6 +55,20 @@ public class UsuarioService {
     public Usuario cadastrarUsuarioCompleto(RegistroDTO dto) {
         logger.info("Iniciando cadastro completo para o email: {} com tipo: {}", dto.getEmail(), dto.getTipoUsuario());
         
+        //VALIDAÇÃO DE DUPLICIDADE
+        //verifica se o CPF já existe
+        if (usuarioRepository.existsById(dto.getCpf())) {
+            logger.warn("Tentativa de cadastro falhou: CPF já cadastrado -> {}", dto.getCpf());
+            throw new RuntimeException("Erro: Este CPF já está cadastrado no sistema!");
+        }
+
+        //Verifica se o e-mail já existe
+        if (usuarioRepository.findByEmail(dto.getEmail()) != null) {
+            logger.warn("Tentativa de cadastro falhou: E-mail já em uso -> {}", dto.getEmail());
+            throw new RuntimeException("Erro: Este E-mail já está em uso!");
+        }
+        
+        //Criação do usuário
         Usuario usuario = new Usuario();
         usuario.setCpf(dto.getCpf());
         usuario.setNome(dto.getNome());
@@ -121,7 +135,7 @@ public class UsuarioService {
         return null;
     }
 
-    // Método auxiliar para obter o utilizador atualmente logado
+    //Método auxiliar para obter o utilizador atualmente logado
     private String getLogado() {
         Authentication userLogado = SecurityContextHolder.getContext().getAuthentication();
         if (userLogado != null && !(userLogado instanceof AnonymousAuthenticationToken)) {
