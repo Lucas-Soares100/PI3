@@ -48,6 +48,7 @@
             android:exported="false" />
         <activity android:name="com.example.errornull_proximaetapa.CursoInfo" />
         <activity android:name="com.example.errornull_proximaetapa.TelaOportunidades" />
+        <activity android:name="com.example.errornull_proximaetapa.Questionario" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

@@ -30,7 +30,7 @@
         android:exported="false" />
         <activity android:name=".CursoInfo"/>
         <activity android:name=".TelaOportunidades"/>
-
+        <activity android:name=".Questionario"/>
 
     </application>
 

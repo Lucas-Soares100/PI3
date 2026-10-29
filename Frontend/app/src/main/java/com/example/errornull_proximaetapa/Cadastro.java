@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterViewAnimator;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,11 +34,13 @@ public class Cadastro extends AppCompatActivity {
     private LinearLayout layoutAluno, layoutProfessor, layoutAdmin;
     private TextInputLayout tilCpf, tilNome, tilEmail, textInputLayoutSenha;
     private EditText inputCpf, inputNome, inputEmail, inputSenha;
-    private EditText inputTelefoneAluno, inputEscola, inputCidade, inputGrade;
+    private EditText inputTelefoneAluno, inputEscola, inputCidade;
     private EditText inputTelefoneProfessor, inputEspecialidade;
     private EditText inputCargo;
     private Button btnCadastrar, btnIrLogin;
     private ApiService api;
+    private Spinner spinnerGrade;
+
     private String tipoUsuarioSelecionado = "aluno";
 
     @Override
@@ -81,6 +86,7 @@ public class Cadastro extends AppCompatActivity {
             android.R.layout.simple_spinner_dropdown_item,
             niveisAcademicos
         );
+
         spinnerGrade.setAdapter(adapterGrade);
 
         inputTelefoneProfessor = findViewById(R.id.input_telefone_professor);
