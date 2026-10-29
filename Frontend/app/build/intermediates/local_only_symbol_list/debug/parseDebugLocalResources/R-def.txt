@@ -5,6 +5,7 @@ color dark_blue
 color darkgray
 color gray
 color green
+color lilac
 color limegreen
 color purple
 color white
@@ -129,6 +130,7 @@ id rgTempoLivre
 id rg_tipo_usuario
 id spinner_grade
 id telaPerfil
+id telaQuestionario
 id textInputLayoutEmail
 id textInputLayoutSenha
 id tilCpf

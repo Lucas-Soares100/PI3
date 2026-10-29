@@ -3,6 +3,7 @@ int color dark_blue 0x0
 int color darkgray 0x0
 int color gray 0x0
 int color green 0x0
+int color lilac 0x0
 int color limegreen 0x0
 int color purple 0x0
 int color white 0x0
@@ -127,6 +128,7 @@ int id rgTempoLivre 0x0
 int id rg_tipo_usuario 0x0
 int id spinner_grade 0x0
 int id telaPerfil 0x0
+int id telaQuestionario 0x0
 int id textInputLayoutEmail 0x0
 int id textInputLayoutSenha 0x0
 int id tilCpf 0x0
