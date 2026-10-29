@@ -7,6 +7,8 @@ import com.br.projetoproximaetapa.dto.UsuarioDto;
 import com.br.projetoproximaetapa.model.*;
 import com.br.projetoproximaetapa.repository.*;
 import com.br.projetoproximaetapa.security.Token;
+import com.br.projetoproximaetapa.security.TokenUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -104,10 +106,11 @@ public class UsuarioService {
     public Token gerarToken(UsuarioDto dto) {
         Usuario usuario = usuarioRepository.findByEmail(dto.getEmail());
         
-        //Valida se o usuário existe e se a senha criptografada confere
+        // Valida se o usuário existe e se a senha criptografada confere
         if (usuario != null && passwordEncoder.matches(dto.getSenha(), usuario.getSenha())) {
-            //Retorna o token gerado pelo seu sistema de segurança
-            return new Token("Bearer-Token-Gerado-Com-Sucesso"); 
+            // Gera o token JWT real usando a tua classe TokenUtil
+            String tokenJwt = TokenUtil.createToken(usuario);
+            return new Token(tokenJwt); 
         }
         
         logger.warn("Tentativa de login falhou para o e-mail: {}", dto.getEmail());
