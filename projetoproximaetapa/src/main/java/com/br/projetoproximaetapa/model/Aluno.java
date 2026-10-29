@@ -3,6 +3,7 @@ package com.br.projetoproximaetapa.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import jakarta.validation.constraints.Pattern;
 
 @Data 
 
