@@ -62,7 +62,26 @@ public class Cadastro extends AppCompatActivity {
         inputTelefoneAluno = findViewById(R.id.input_telefone_aluno);
         inputEscola = findViewById(R.id.input_escola);
         inputCidade = findViewById(R.id.input_cidade);
-        inputGrade = findViewById(R.id.input_grade);
+        spinnerGrade = findViewById(R.id.spinner_grade);
+
+        String[] niveisAcademicos = new String[]{
+            "Selecione sua escolaridade...",
+            "EM 1° ano",
+            "EM 2° ano",
+            "EM 3° ano",
+            "Graduação",
+            "Pós-Graduação",
+            "Mestrado",
+            "Doutorado",
+            "Pós-Doutorado"
+        };
+
+        ArrayAdapter<String> adapterGrade = new ArrayAdapter<>(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            niveisAcademicos
+        );
+        spinnerGrade.setAdapter(adapterGrade);
 
         inputTelefoneProfessor = findViewById(R.id.input_telefone_professor);
         inputEspecialidade = findViewById(R.id.input_especialidade);
@@ -156,7 +175,11 @@ public class Cadastro extends AppCompatActivity {
                 telAluno = inputTelefoneAluno.getText().toString().trim();
                 escola = inputEscola.getText().toString().trim();
                 cidade = inputCidade.getText().toString().trim();
-                grade = inputGrade.getText().toString().trim();
+                grade = spinnerGrade.getSelectedItem().toString();
+                if (grade.equals("Selecione sua escolaridade...")) {
+                    Toast.makeText(Cadastro.this, "Por favor, selecione sua escolaridade!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             } else if ("professor".equals(tipoUsuarioSelecionado)) {
                 telProf = inputTelefoneProfessor.getText().toString().trim();
                 especialidade = inputEspecialidade.getText().toString().trim();

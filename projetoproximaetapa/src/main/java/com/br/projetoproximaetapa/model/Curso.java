@@ -12,9 +12,8 @@ import lombok.Data;
 public class Curso {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_curso")
-    private Integer idCurso;
+    @Column(name = "id_curso", length = 150, nullable = false)
+    private String idCurso;
 
     @Column(name = "id_atividade", nullable = false)
     private Integer idAtividade;
@@ -31,11 +30,13 @@ public class Curso {
     @Column(name = "descricao_curso", columnDefinition = "TEXT", nullable = false)
     private String descricaoCurso;
 
-    @Column(name = "data_curso", nullable = false)
-    private LocalDate dataCurso;
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "datas_curso", columnDefinition = "JSON", nullable = false)
+    private List<LocalDate> datasCurso;
 
-    @Column(name = "horario_curso", nullable = false)
-    private LocalTime horarioCurso;
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "horarios_curso", columnDefinition = "JSON", nullable = false)
+    private List<LocalTime> horariosCurso;
 
     @Column(name = "local_curso", length = 150, nullable = false)
     private String localCurso;

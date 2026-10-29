@@ -23,7 +23,7 @@ public class CursoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Curso> buscarCurso(@PathVariable Integer id) {
+    public ResponseEntity<Curso> buscarCurso(@PathVariable String id) {
         return ResponseEntity.status(200).body(cursoService.buscarCursoPorId(id));
     }
 
@@ -38,7 +38,7 @@ public class CursoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletarCurso(@PathVariable Integer id) {
+    public ResponseEntity<?> deletarCurso(@PathVariable String id) {
         cursoService.deletarCurso(id);
         return ResponseEntity.status(204).build();
     }

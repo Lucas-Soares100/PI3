@@ -26,7 +26,8 @@ public class Aluno {
     @Column(name = "cidade", length = 100, nullable = false)
     private String cidade;
 
-    @NotBlank(message = "A grade é obrigatória!")
-    @Column(name = "grade", length = 20, nullable = false)
+    @Column(name = "grade", length = 50, nullable = false)
+    @Pattern(regexp = "EM 1° ano|EM 2° ano|EM 3° ano|Graduação|Pós-Graduação|Mestrado|Doutorado|Pós-Doutorado", 
+         message = "Nível de escolaridade inválido")
     private String grade;
 }
