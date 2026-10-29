@@ -88,7 +88,7 @@ public class LoginInfo extends AppCompatActivity {
 
         if (btnIrParaCadastro != null) {
             btnIrParaCadastro.setOnClickListener(v -> {
-                startActivity(new Intent(LoginInfo.this, TelaPerfil.class));
+                startActivity(new Intent(LoginInfo.this, Cadastro.class));
             });
         }
     }
