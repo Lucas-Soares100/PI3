@@ -5101,6 +5101,23 @@
             "outputFile": "com.example.errornull_proximaetapa.app-debug-30:/values_values.arsc.flat",
             "map": [
                 {
+                    "source": "C:\\Users\\26029787\\Documents\\ProjetoPI_Remote\\PI3\\Frontend\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "63",
+                        "endOffsets": "76"
+                    },
+                    "to": {
+                        "startLines": "1973",
+                        "startColumns": "4",
+                        "startOffsets": "130526",
+                        "endColumns": "63",
+                        "endOffsets": "130585"
+                    }
+                },
+                {
                     "source": "C:\\Users\\26029787\\.gradle\\caches\\9.1.0\\transforms\\05d5cb451a76a320fec161109e3c55a3\\workspace\\transformed\\appcompat-resources-1.6.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,18,24,34,50",
@@ -5232,23 +5249,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\26029787\\Desktop\\PI3\\Frontend\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "1",
-                        "startColumns": "4",
-                        "startOffsets": "17",
-                        "endColumns": "63",
-                        "endOffsets": "76"
-                    },
-                    "to": {
-                        "startLines": "1973",
-                        "startColumns": "4",
-                        "startOffsets": "130526",
-                        "endColumns": "63",
-                        "endOffsets": "130585"
-                    }
-                },
-                {
                     "source": "C:\\Users\\26029787\\.gradle\\caches\\9.1.0\\transforms\\d6b1011d93d00aa138fb4ef692b816ce\\workspace\\transformed\\cardview-1.0.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,35,36,37,38,45,47,50,7",
@@ -5321,6 +5321,25 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\26029787\\Documents\\ProjetoPI_Remote\\PI3\\Frontend\\app\\src\\main\\res\\values\\themes.xml",
+                    "from": {
+                        "startLines": "2,7",
+                        "startColumns": "4,4",
+                        "startOffsets": "102,343",
+                        "endLines": "5,7",
+                        "endColumns": "12,90",
+                        "endOffsets": "335,429"
+                    },
+                    "to": {
+                        "startLines": "2465,6379",
+                        "startColumns": "4,4",
+                        "startOffsets": "172832,445967",
+                        "endLines": "2468,6379",
+                        "endColumns": "12,89",
+                        "endOffsets": "172956,446052"
+                    }
+                },
+                {
                     "source": "C:\\Users\\26029787\\.gradle\\caches\\9.1.0\\transforms\\cf50a164a57cbd08d7232c7c59c581a5\\workspace\\transformed\\viewpager2-1.0.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -5337,6 +5356,23 @@
                         "endLines": "13514",
                         "endColumns": "24",
                         "endOffsets": "796221"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\26029787\\Documents\\ProjetoPI_Remote\\PI3\\Frontend\\app\\src\\main\\res\\values\\colors.xml",
+                    "from": {
+                        "startLines": "2,10,9,8,6,5,11,3,4,7",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "57,397,353,313,230,185,442,100,143,271",
+                        "endColumns": "41,43,42,38,39,43,40,41,40,40",
+                        "endOffsets": "94,436,391,347,265,224,478,137,179,307"
+                    },
+                    "to": {
+                        "startLines": "640,653,654,698,699,702,950,963,964,965",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "32798,33730,33774,36786,36825,37000,55737,56596,56638,56679",
+                        "endColumns": "41,43,42,38,39,43,40,41,40,40",
+                        "endOffsets": "32835,33769,33812,36820,36860,37039,55773,56633,56674,56715"
                     }
                 },
                 {
@@ -5393,23 +5429,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\26029787\\Desktop\\PI3\\Frontend\\app\\src\\main\\res\\values\\colors.xml",
-                    "from": {
-                        "startLines": "2,10,9,8,6,5,11,3,4,7",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "57,397,353,313,230,185,442,100,143,271",
-                        "endColumns": "41,43,42,38,39,43,40,41,40,40",
-                        "endOffsets": "94,436,391,347,265,224,478,137,179,307"
-                    },
-                    "to": {
-                        "startLines": "640,653,654,698,699,702,950,963,964,965",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "32798,33730,33774,36786,36825,37000,55737,56596,56638,56679",
-                        "endColumns": "41,43,42,38,39,43,40,41,40,40",
-                        "endOffsets": "32835,33769,33812,36820,36860,37039,55773,56633,56674,56715"
-                    }
-                },
-                {
                     "source": "C:\\Users\\26029787\\.gradle\\caches\\9.1.0\\transforms\\37a3a3a53d56f186d357499c08df538d\\workspace\\transformed\\fragment-1.3.6\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,10",
@@ -5444,50 +5463,12 @@
                         "endColumns": "53",
                         "endOffsets": "123622"
                     }
-                },
-                {
-                    "source": "C:\\Users\\26029787\\Desktop\\PI3\\Frontend\\app\\src\\main\\res\\values\\themes.xml",
-                    "from": {
-                        "startLines": "2,7",
-                        "startColumns": "4,4",
-                        "startOffsets": "102,343",
-                        "endLines": "5,7",
-                        "endColumns": "12,90",
-                        "endOffsets": "335,429"
-                    },
-                    "to": {
-                        "startLines": "2465,6379",
-                        "startColumns": "4,4",
-                        "startOffsets": "172832,445967",
-                        "endLines": "2468,6379",
-                        "endColumns": "12,89",
-                        "endOffsets": "172956,446052"
-                    }
                 }
             ]
         },
         {
             "outputFile": "com.example.errornull_proximaetapa.app-debug-30:/values-night-v8_values-night-v8.arsc.flat",
             "map": [
-                {
-                    "source": "C:\\Users\\26029787\\Desktop\\PI3\\Frontend\\app\\src\\main\\res\\values-night\\themes.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "102",
-                        "endLines": "5",
-                        "endColumns": "12",
-                        "endOffsets": "333"
-                    },
-                    "to": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "5",
-                        "endColumns": "12",
-                        "endOffsets": "179"
-                    }
-                },
                 {
                     "source": "C:\\Users\\26029787\\.gradle\\caches\\9.1.0\\transforms\\5b67104fc1c05c6581bbea8c6db355bf\\workspace\\transformed\\appcompat-1.6.1\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
@@ -5503,6 +5484,25 @@
                         "startOffsets": "184,254,338,422,518,620,722,3577",
                         "endColumns": "69,83,83,95,101,101,93,88",
                         "endOffsets": "249,333,417,513,615,717,811,3661"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\26029787\\Documents\\ProjetoPI_Remote\\PI3\\Frontend\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "102",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "333"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "179"
                     }
                 },
                 {

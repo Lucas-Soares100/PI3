@@ -306,7 +306,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="32dp"
-            android:backgroundTint="@color/gray"
+            android:backgroundTint="@color/lilac"
             android:text="Já possui Login?"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
