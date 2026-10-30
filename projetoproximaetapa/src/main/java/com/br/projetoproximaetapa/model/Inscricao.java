@@ -19,7 +19,7 @@ public class Inscricao {
     private String cpfAluno;
 
     @Column(name = "id_curso", nullable = false)
-    private Integer idCurso;
+    private String idCurso;
 
     @Column(name = "cpf_professor", length = 11)
     private String cpfProfessor;

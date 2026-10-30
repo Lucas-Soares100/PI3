@@ -10,6 +10,6 @@ import java.util.Optional;
 @Repository 
 public interface IEncontro extends JpaRepository<Encontro, Integer> {
     @Query ("SELECT e FROM Encontro WHERE e.idcurso = :idCurso AND e.dataEncontro =:data")
-    Optional<Encontro>findEncontroDeHoje(Integer idCurso, LocalDate data);
+    Optional<Encontro>findEncontroDeHoje(String idCurso, LocalDate data);
 
 }
