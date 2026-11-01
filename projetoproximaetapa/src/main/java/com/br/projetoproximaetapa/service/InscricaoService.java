@@ -1,6 +1,7 @@
 package com.br.projetoproximaetapa.service;
 
 import java.util.List;
+import java.util.UUID;
 import org.springframework.stereotype.Service;
 import com.br.projetoproximaetapa.model.Inscricao;
 import com.br.projetoproximaetapa.repository.IInscricao;
@@ -23,6 +24,10 @@ public class InscricaoService {
     }
 
     public Inscricao cadastrarInscricao(Inscricao inscricao) {
+        if (inscricao.getQrCode() == null || inscricao.getQrCode().isEmpty()) {
+            inscricao.setQrCode(UUID.randomUUID().toString());
+        }
+        
         return inscricaoRepository.save(inscricao);
     }
 
