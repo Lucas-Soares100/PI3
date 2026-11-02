@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository 
 public interface IEncontro extends JpaRepository<Encontro, String> {
-    Optional<Encontro> findByIdCursoAndDataEncontro(String idCurso, LocalDate dataEncontro);
+    Optional<Encontro> findEncontroDeHoje(String idCurso, LocalDate dataEncontro);
 }
