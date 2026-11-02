@@ -7,5 +7,4 @@ import java.util.Optional;
 
 @Repository
 public interface IInscricao extends JpaRepository<Inscricao, String> {
-    Optional<Inscricao> findByQrCode(String qrCode);
 }
