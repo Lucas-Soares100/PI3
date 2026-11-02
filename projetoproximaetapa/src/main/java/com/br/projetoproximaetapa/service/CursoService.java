@@ -46,20 +46,35 @@ public class CursoService {
         return true;
     }
 
-    private String gerarIdPersonalizado(String nomeCurso, List<LocalDate> datas, String faculdade) {
-        String prefixo = nomeCurso != null && nomeCurso.length() >= 4 
-            ? nomeCurso.substring(0, 4).toLowerCase() 
-            : "curs";
-
-        StringBuilder sbDatas = new StringBuilder();
-        if (datas != null) {
-            for (LocalDate data : datas) {
-                String dia = String.format("%02d", data.getDayOfMonth());
-                String mes = String.format("%02d", data.getMonthValue());
-                sbDatas.append(dia).append(mes);
-            }
+    private String gerarIdPersonalizado(String nomeCurso, String faculdade, String diaSemana, Integer quantidadeAula) {
+        // 1. Primeiras 4 letras do curso (normalizadas e minúsculas)
+        String prefixoCurso = (nomeCurso != null && nomeCurso.length() >= 4) 
+            ? removerAcentos(nomeCurso).substring(0, 4).toLowerCase() 
+            : (nomeCurso != null ? removerAcentos(nomeCurso).toLowerCase() : "curs");
+        
+        // 2. Nome da faculdade limpo (sem espaços ou acentos, ex: "FECAP" -> "fecap")
+        String limpaFaculdade = (faculdade != null) 
+            ? removerAcentos(faculdade).replaceAll("[^a-zA-Z0-9]", "").toLowerCase() 
+            : "ext";
+        
+        // 3. Dia da semana limpo (ex: "Segunda-Feira" -> "segunda")
+        String limpaDia = "";
+        if (diaSemana != null) {
+            limpaDia = removerAcentos(diaSemana).toLowerCase()
+                .replace("-feira", "")
+                .replaceAll("[^a-zA-Z0-9]", "");
         }
+        
+        // 4. Quantidade de aulas (número final, ex: 2)
+        String qtd = (quantidadeAula != null) ? quantidadeAula.toString() : "";
 
-        return prefixo + sbDatas.toString() + faculdade;
+        return prefixoCurso + limpaFaculdade + limpaDia + qtd;
+    }
+
+    // Auxiliar para remover acentos de strings (ex: "Terça" -> "terca")
+    private String removerAcentos(String str) {
+        if (str == null) return "";
+        String nfdNormalizedString = Normalizer.normalize(str, Normalizer.Form.NFD); 
+        return nfdNormalizedString.replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     }
 }

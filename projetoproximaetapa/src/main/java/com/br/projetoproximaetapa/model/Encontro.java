@@ -14,8 +14,8 @@ public class Encontro {
     @Column(name = "id_encontro", length = 150)
     private String idEncontro;
 
-    @Column(name = "id_curso", nullable = false)
-    private Integer idCurso;
+    @Column(name = "id_curso", length = 150, nullable = false)
+    private String idCurso;
 
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "datas_encontro", columnDefinition = "JSON", nullable = false)

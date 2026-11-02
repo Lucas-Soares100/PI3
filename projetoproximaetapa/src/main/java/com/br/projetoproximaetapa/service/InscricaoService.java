@@ -1,7 +1,6 @@
 package com.br.projetoproximaetapa.service;
 
 import java.util.List;
-import java.util.UUID;
 import org.springframework.stereotype.Service;
 import com.br.projetoproximaetapa.model.Inscricao;
 import com.br.projetoproximaetapa.repository.IInscricao;
@@ -19,15 +18,13 @@ public class InscricaoService {
         return inscricaoRepository.findAll();
     }
 
-    public Inscricao buscarInscricaoPorId(Integer id) {
+    public Inscricao buscarInscricaoPorId(String id) {
         return inscricaoRepository.findById(id).orElse(null);
     }
 
     public Inscricao cadastrarInscricao(Inscricao inscricao) {
-        if (inscricao.getQrCode() == null || inscricao.getQrCode().isEmpty()) {
-            inscricao.setQrCode(UUID.randomUUID().toString());
-        }
-        
+        String idGerado = gerarIdPersonalizado(inscricao.getCpfAluno(), inscricao.getIdCurso());
+        inscricao.setIdInscricao(idGerado);
         return inscricaoRepository.save(inscricao);
     }
 
@@ -35,8 +32,16 @@ public class InscricaoService {
         return inscricaoRepository.save(inscricao);
     }
 
-    public Boolean deletarInscricao(Integer id) {
+    public Boolean deletarInscricao(String id) {
         inscricaoRepository.deleteById(id);
         return true;
+    }
+
+    private String gerarIdPersonalizado(String cpfAluno, String idCurso) {
+        String cpfLimpo = cpfAluno != null ? cpfAluno.replaceAll("[^0-9]", "") : "";
+        String cursoId = idCurso != null ? idCurso.trim() : "";
+        
+        // Adiciona o prefixo "ins" na frente
+        return "ins" + cpfLimpo + cursoId;
     }
 }

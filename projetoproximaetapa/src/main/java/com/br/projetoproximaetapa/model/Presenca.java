@@ -14,6 +14,9 @@ public class Presenca {
     @Column(name = "id_presenca", length = 255)
     private String idPresenca;
 
+    @Column(name = "qr_code", length = 255, nullable = false)
+    private String qrCode;
+
     @Column(name = "id_inscricao", nullable = false)
     private Integer idInscricao;
 

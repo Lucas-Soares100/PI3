@@ -25,7 +25,8 @@ public class Blacklist {
     private String motivo;
 
     @Column(name = "nivel_strike", length = 100)
-    @Pattern(regexp = "1 | 2 | 3")
+    @Min(value = 1, message = "O nível de strike deve ser 1, 2 ou 3")
+    @Max(value = 3, message = "O nível de strike deve ser 1, 2 ou 3")
     private Integer nivelStrike;
 
     @Column(name = "dias_bloqueio", nullable = false)
