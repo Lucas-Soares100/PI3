@@ -3,38 +3,19 @@ package com.br.projetoproximaetapa.controller;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.br.projetoproximaetapa.dto.PresencaRequestDTO;
 import com.br.projetoproximaetapa.model.Presenca;
 import com.br.projetoproximaetapa.service.PresencaService;
-import com.br.projetoproximaetapa.model.Inscricao;
-import com.br.projetoproximaetapa.model.Encontro;
-import com.br.projetoproximaetapa.repository.IInscricao;
-import com.br.projetoproximaetapa.repository.IEncontro;
-import com.br.projetoproximaetapa.repository.IQRCode; 
-import com.br.projetoproximaetapa.dto.PresencaRequestDTO; 
-import java.time.LocalDate;
-import java.util.Optional;
-
-
-
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/presencas")
-
-
 public class PresencaController {
 
     private final PresencaService presencaService;
-    private final IInscricao inscricaoRepository;
-    private final IEncontro encontroRepository;
-    private final IQRCode qrCodeRepository;
-    
 
-    public PresencaController(PresencaService presencaService, IInscricao inscricaoRepository, IEncontro encontroRepository, IQRCode qrCodeRepository) {
+    public PresencaController(PresencaService presencaService) {
         this.presencaService = presencaService;
-        this.inscricaoRepository = inscricaoRepository;
-        this.encontroRepository = encontroRepository;
-        this.qrCodeRepository = qrCodeRepository;
     }
 
     @GetMapping
@@ -44,7 +25,11 @@ public class PresencaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Presenca> buscarPresenca(@PathVariable String id) {
-        return ResponseEntity.status(200).body(presencaService.buscarPresencaPorId(id));
+        Presenca presenca = presencaService.buscarPresencaPorId(id);
+        if (presenca == null) {
+            return ResponseEntity.status(404).build();
+        }
+        return ResponseEntity.status(200).body(presenca);
     }
 
     @PostMapping
@@ -63,35 +48,14 @@ public class PresencaController {
         return ResponseEntity.status(204).build();
     }
 
+    // Endpoint de leitura / registo limpo, delegando tudo para o Service
     @PostMapping("/ler-qrcode")
     public ResponseEntity<String> registrarPresencaPorQrCode(@RequestBody PresencaRequestDTO request) {
-
-      
-        Optional<Inscricao> inscricaoOpt = qrCodeRepository.findByQr_code(request.getQrCode());
-        if (inscricaoOpt.isEmpty()) {
-            return ResponseEntity.badRequest().body("Erro: QR Code inválido ou inscrição não encontrada.");
+        try {
+            presencaService.registrarPresenca(request);
+            return ResponseEntity.status(201).body("Presença registrada com sucesso!");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
-        Inscricao inscricao = inscricaoOpt.get();
-
-
-        LocalDate hoje = LocalDate.now();
-        Optional<Encontro> encontroOpt = encontroRepository.findEncontroDeHoje(inscricao.getIdCurso(), hoje);
-        if (encontroOpt.isEmpty()) {
-            return ResponseEntity.badRequest().body("Erro: Não existe aula agendada para este curso na data de hoje.");
-        }
-        Encontro encontro = encontroOpt.get();
-
- 
-        Presenca novaPresenca = new Presenca();
-        novaPresenca.setIdInscricao(inscricao.getIdInscricao());
-        novaPresenca.setIdEncontro(encontro.getIdEncontro());
-        novaPresenca.setCpfProfessor(request.getCpfProfessor());
-        novaPresenca.setStatusPresenca("presente");
-
-   
-        presencaService.cadastrarPresenca(novaPresenca);
-
-        return ResponseEntity.status(201).body("Presença registada com sucesso para o aluno!");
     }
 }
-    
