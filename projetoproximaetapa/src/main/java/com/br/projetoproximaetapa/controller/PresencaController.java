@@ -8,7 +8,8 @@ import com.br.projetoproximaetapa.service.PresencaService;
 import com.br.projetoproximaetapa.model.Inscricao;
 import com.br.projetoproximaetapa.model.Encontro;
 import com.br.projetoproximaetapa.repository.IInscricao;
-import com.br.projetoproximaetapa.repository.IEncontro; 
+import com.br.projetoproximaetapa.repository.IEncontro;
+import com.br.projetoproximaetapa.repository.IQRCode; 
 import com.br.projetoproximaetapa.dto.PresencaRequestDTO; 
 import java.time.LocalDate;
 import java.util.Optional;
@@ -26,11 +27,14 @@ public class PresencaController {
     private final PresencaService presencaService;
     private final IInscricao inscricaoRepository;
     private final IEncontro encontroRepository;
+    private final IQRCode qrCodeRepository;
+    
 
-    public PresencaController(PresencaService presencaService, IInscricao inscricaoRepository, IEncontro encontroRepository) {
+    public PresencaController(PresencaService presencaService, IInscricao inscricaoRepository, IEncontro encontroRepository, IQRCode qrCodeRepository) {
         this.presencaService = presencaService;
         this.inscricaoRepository = inscricaoRepository;
         this.encontroRepository = encontroRepository;
+        this.qrCodeRepository = qrCodeRepository;
     }
 
     @GetMapping
@@ -63,7 +67,7 @@ public class PresencaController {
     public ResponseEntity<String> registrarPresencaPorQrCode(@RequestBody PresencaRequestDTO request) {
 
       
-        Optional<Inscricao> inscricaoOpt = inscricaoRepository.findByQrCode(request.getQrCode());
+        Optional<Inscricao> inscricaoOpt = qrCodeRepository.findByQr_code(request.getQrCode());
         if (inscricaoOpt.isEmpty()) {
             return ResponseEntity.badRequest().body("Erro: QR Code inválido ou inscrição não encontrada.");
         }
