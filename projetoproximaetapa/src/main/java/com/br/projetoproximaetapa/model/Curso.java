@@ -38,8 +38,7 @@ public class Curso {
     private String localCurso;
 
     @Column(name = "dia_semana", length = 100)
-    @Pattern(regexp = "Domingo | Segunda-Feira | Terça-Feira | Quarta-Feira | Quinta-Feira | Sexta-Feira | Sábado", message = "Dia da semana inválido")
-    private String diaSemana;
+    @Pattern(regexp = "Domingo|Segunda-Feira|Terça-Feira|Quarta-Feira|Quinta-Feira|Sexta-Feira|Sábado", message = "Dia da semana inválido")    private String diaSemana;
 
     @Column(name = "carga_horaria", nullable = false)
     private Integer cargaHoraria;
