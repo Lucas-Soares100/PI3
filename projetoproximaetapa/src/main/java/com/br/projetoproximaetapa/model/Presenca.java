@@ -11,9 +11,8 @@ import lombok.Data;
 public class Presenca {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_presenca")
-    private Integer idPresenca;
+    @Column(name = "id_presenca", length = 255)
+    private String idPresenca;
 
     @Column(name = "id_inscricao", nullable = false)
     private Integer idInscricao;
@@ -25,7 +24,8 @@ public class Presenca {
     private String cpfProfessor;
 
     @Column(name = "status_presenca", length = 20, nullable = false)
-    private String statusPresenca = "presente";
+    @Pattern(regexp = "Presente | Ausente")
+    private String statusPresenca;
 
     @Column(name = "data_presenca", nullable = false)
     private LocalDateTime dataPresenca = LocalDateTime.now();

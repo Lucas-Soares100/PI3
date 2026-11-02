@@ -24,6 +24,10 @@ public class Blacklist {
     @Column(name = "motivo", columnDefinition = "TEXT", nullable = false)
     private String motivo;
 
+    @Column(name = "nivel_strike", length = 100)
+    @Pattern(regexp = "1 | 2 | 3")
+    private Integer nivelStrike;
+
     @Column(name = "dias_bloqueio", nullable = false)
     private Integer diasBloqueio;
 

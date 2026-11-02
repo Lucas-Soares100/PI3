@@ -11,19 +11,20 @@ import lombok.Data;
 public class Encontro {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_encontro")
-    private Integer idEncontro;
+    @Column(name = "id_encontro", length = 150)
+    private String idEncontro;
 
     @Column(name = "id_curso", nullable = false)
     private Integer idCurso;
 
-    @Column(name = "numero_encontro", nullable = false)
-    private Integer numeroEncontro;
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "datas_encontro", columnDefinition = "JSON", nullable = false)
+    private List<LocalDate> datasEncontro;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "horarios_encontro", columnDefinition = "JSON", nullable = false)
+    private List<LocalTime> horariosEncontro;
 
     @Column(name = "data_encontro", nullable = false)
     private LocalDate dataEncontro;
-
-    @Column(name = "codigo", length = 30, unique = true)
-    private String codigo;
 }

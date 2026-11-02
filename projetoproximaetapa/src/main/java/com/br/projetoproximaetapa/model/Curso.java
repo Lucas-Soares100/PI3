@@ -32,16 +32,12 @@ public class Curso {
     @Column(name = "descricao_curso", columnDefinition = "TEXT", nullable = false)
     private String descricaoCurso;
 
-    @JdbcTypeCode(SqlTypes.JSON)
-    @Column(name = "datas_curso", columnDefinition = "JSON", nullable = false)
-    private List<LocalDate> datasCurso;
-
-    @JdbcTypeCode(SqlTypes.JSON)
-    @Column(name = "horarios_curso", columnDefinition = "JSON", nullable = false)
-    private List<LocalTime> horariosCurso;
-
     @Column(name = "local_curso", length = 150, nullable = false)
     private String localCurso;
+
+    @Column(name = "dia_semana", length = 100)
+    @Pattern(regexp = "Domingo | Segunda-Feira | Terça-Feira | Quarta-Feira | Quinta-Feira | Sexta-Feira | Sábado")
+    private String diaSemana;
 
     @Column(name = "carga_horaria", nullable = false)
     private Integer cargaHoraria;
