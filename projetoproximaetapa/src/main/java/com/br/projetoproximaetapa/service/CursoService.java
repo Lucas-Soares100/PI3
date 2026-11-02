@@ -1,5 +1,6 @@
 package com.br.projetoproximaetapa.service;
 
+import java.text.Normalizer;
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class CursoService {
         Universidade universidade = universidadeRepository.findById(curso.getIdUniversidade()).orElse(null);
         String nomeFaculdade = universidade != null ? universidade.getNomeUniversidade().replaceAll("\\s+", "") : "EXT";
 
-        String idGerado = gerarIdPersonalizado(curso.getNomeCurso(), curso.getDatasCurso(), nomeFaculdade);
+        String idGerado = gerarIdPersonalizado(curso.getNomeCurso(), curso.getDiaSemana(), nomeFaculdade, curso.getQuantidadeAula());
         curso.setIdCurso(idGerado);
 
         return cursoRepository.save(curso);

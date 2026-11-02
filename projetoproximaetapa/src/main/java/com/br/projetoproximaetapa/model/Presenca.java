@@ -1,6 +1,8 @@
 package com.br.projetoproximaetapa.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
+
 import java.time.LocalDateTime;
 import lombok.Data;
 
@@ -18,10 +20,10 @@ public class Presenca {
     private String qrCode;
 
     @Column(name = "id_inscricao", nullable = false)
-    private Integer idInscricao;
+    private String idInscricao;
 
     @Column(name = "id_encontro", nullable = false)
-    private Integer idEncontro;
+    private String idEncontro;
 
     @Column(name = "cpf_professor", length = 11)
     private String cpfProfessor;

@@ -23,7 +23,7 @@ public class InscricaoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Inscricao> buscarInscricao(@PathVariable Integer id) {
+    public ResponseEntity<Inscricao> buscarInscricao(@PathVariable String id) {
         return ResponseEntity.status(200).body(inscricaoService.buscarInscricaoPorId(id));
     }
 
@@ -38,7 +38,7 @@ public class InscricaoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletarInscricao(@PathVariable Integer id) {
+    public ResponseEntity<?> deletarInscricao(@PathVariable String id) {
         inscricaoService.deletarInscricao(id);
         return ResponseEntity.status(204).build();
     }

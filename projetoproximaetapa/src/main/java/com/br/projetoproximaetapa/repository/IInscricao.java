@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface IInscricao extends JpaRepository<Inscricao, Integer> {
+public interface IInscricao extends JpaRepository<Inscricao, String> {
     Optional<Inscricao> findByQrCode(String qrCode);
 }

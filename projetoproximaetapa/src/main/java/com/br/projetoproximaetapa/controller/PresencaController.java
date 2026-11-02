@@ -39,7 +39,7 @@ public class PresencaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Presenca> buscarPresenca(@PathVariable Integer id) {
+    public ResponseEntity<Presenca> buscarPresenca(@PathVariable String id) {
         return ResponseEntity.status(200).body(presencaService.buscarPresencaPorId(id));
     }
 
@@ -54,7 +54,7 @@ public class PresencaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletarPresenca(@PathVariable Integer id) {
+    public ResponseEntity<?> deletarPresenca(@PathVariable String id) {
         presencaService.deletarPresenca(id);
         return ResponseEntity.status(204).build();
     }

@@ -23,7 +23,7 @@ public class EncontroController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Encontro> buscarEncontro(@PathVariable Integer id) {
+    public ResponseEntity<Encontro> buscarEncontro(@PathVariable String id) {
         return ResponseEntity.status(200).body(encontroService.buscarEncontroPorId(id));
     }
 
@@ -38,7 +38,7 @@ public class EncontroController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletarEncontro(@PathVariable Integer id) {
+    public ResponseEntity<?> deletarEncontro(@PathVariable String id) {
         encontroService.deletarEncontro(id);
         return ResponseEntity.status(204).build();
     }

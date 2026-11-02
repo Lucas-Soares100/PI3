@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository 
-public interface IPresenca extends JpaRepository<Presenca, Integer> {
-    Optional <Presenca> findByIdInscricaoAndIdEncontro (Integer idInscricao, Integer idEncontro);
+public interface IPresenca extends JpaRepository<Presenca, String> {
+    Optional <Presenca> findByIdInscricaoAndIdEncontro (String idInscricao, String idEncontro);
 }

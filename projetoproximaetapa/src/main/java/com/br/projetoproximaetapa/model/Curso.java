@@ -1,6 +1,8 @@
 package com.br.projetoproximaetapa.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;

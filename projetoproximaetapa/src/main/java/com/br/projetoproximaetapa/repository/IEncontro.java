@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 @Repository 
-public interface IEncontro extends JpaRepository<Encontro, Integer> {
+public interface IEncontro extends JpaRepository<Encontro, String> {
     @Query ("SELECT e FROM Encontro WHERE e.idcurso = :idCurso AND e.dataEncontro =:data")
     Optional<Encontro>findEncontroDeHoje(String idCurso, LocalDate data);
 

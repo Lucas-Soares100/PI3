@@ -6,11 +6,11 @@ import com.br.projetoproximaetapa.model.QRCode;
 import com.br.projetoproximaetapa.repository.IQRCode;
 
 @Service
-public class QRCodeService {
+public class QRcodeService {
 
     private final IQRCode qrCodeRepository;
 
-    public QRCodeService(IQRCode qrCodeRepository) {
+    public QRcodeService(IQRCode qrCodeRepository) {
         this.qrCodeRepository = qrCodeRepository;
     }
 
