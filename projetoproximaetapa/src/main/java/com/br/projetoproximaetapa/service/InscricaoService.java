@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import com.br.projetoproximaetapa.model.Inscricao;
 import com.br.projetoproximaetapa.repository.IInscricao;
 import com.br.projetoproximaetapa.repository.IEncontro;
-import com.br.projetoproximaetapa.service.QRcodeService;
+import org.springframework.transaction.annotation.Transactional;
+import com.br.projetoproximaetapa.model.Encontro;
+import com.br.projetoproximaetapa.model.QRCode;
 
 @Service
 public class InscricaoService {
@@ -29,10 +31,42 @@ public class InscricaoService {
         return inscricaoRepository.findById(id).orElse(null);
     }
 
+    
+    @Transactional
     public Inscricao cadastrarInscricao(Inscricao inscricao) {
-        String idGerado = gerarIdPersonalizado(inscricao.getCpfAluno(), inscricao.getIdCurso());
+
+        // Gera o identificador da inscrição do aluno
+        String idGerado = gerarIdPersonalizado(
+            inscricao.getCpfAluno(),
+            inscricao.getIdCurso()
+        );
+
         inscricao.setIdInscricao(idGerado);
-        return inscricaoRepository.save(inscricao);
+
+        // Salva a inscrição no banco de dados
+        Inscricao inscricaoSalva = inscricaoRepository.save(inscricao);
+
+        // Busca todos os encontros cadastrados para o curso
+        List<Encontro> encontros = encontroRepository.findByIdCurso(
+            inscricao.getIdCurso()
+        );
+
+        // Percorre os encontros para gerar um QR Code para cada aula
+        for (Encontro encontro : encontros) {
+
+            // Cria um novo objeto QRCode
+            QRCode qrCode = new QRCode();
+
+            // Associa o QR Code ao aluno e ao encontro
+            qrCode.setCpfAluno(inscricao.getCpfAluno());
+            qrCode.setIdEncontro(encontro.getIdEncontro());
+
+            // Cadastra o QR Code ou reutiliza o existente
+            qrCodeService.cadastrarQRCode(qrCode);
+        }
+
+        // Retorna a inscrição cadastrada
+        return inscricaoSalva;
     }
 
     public Inscricao atualizarInscricao(Inscricao inscricao) {
