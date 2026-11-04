@@ -1,6 +1,7 @@
 package com.br.projetoproximaetapa.service;
 
 import java.util.List;
+import java.util.UUID;
 import org.springframework.stereotype.Service;
 import com.br.projetoproximaetapa.model.QRCode;
 import com.br.projetoproximaetapa.repository.IQRCode;
@@ -22,26 +23,47 @@ public class QRcodeService {
         return qrCodeRepository.findById(id).orElse(null);
     }
 
+    
     public QRCode cadastrarQRCode(QRCode qrCode) {
-        String idGerado = gerarIdPersonalizado(qrCode.getCpfAluno(), qrCode.getIdEncontro());
+
+        // Verifica se já existe um QR Code para o aluno nesta aula
+        QRCode codigoExistente = qrCodeRepository
+            .findByCpfAlunoAndIdEncontro(
+                qrCode.getCpfAluno(),
+                qrCode.getIdEncontro()
+            )
+            .orElse(null);
+
+        // Se já existe, reutiliza o mesmo QR Code
+        if (codigoExistente != null) {
+            return codigoExistente;
+        }
+
+        // Se não existe, gera um novo identificador
+        String idGerado = gerarIdPersonalizado(
+            qrCode.getCpfAluno(),
+            qrCode.getIdEncontro()
+        );
+
         qrCode.setQr_code(idGerado);
-        return qrCodeRepository.save(qrCode);
-    }
+
+        // Salva o novo QR Code no banco de dados
+            return qrCodeRepository.save(qrCode);
+        }
 
     public QRCode atualizarQRCode(QRCode qrCode) {
-        return qrCodeRepository.save(qrCode);
-    }
+            return qrCodeRepository.save(qrCode);
+        }
 
-    public Boolean deletarQRCode(String id) {
-        qrCodeRepository.deleteById(id);
-        return true;
-    }
+        public Boolean deletarQRCode(String id) {
+            qrCodeRepository.deleteById(id);
+            return true;
+        }
 
+   
     private String gerarIdPersonalizado(String cpfAluno, String idEncontro) {
-        String cpfLimpo = cpfAluno != null ? cpfAluno.replaceAll("[^0-9]", "") : "";
-        String encontroId = idEncontro != null ? idEncontro.trim() : "";
-        
-        // Adiciona o prefixo "qr" na frente
-        return "qr" + cpfLimpo + encontroId;
-    }
+        String codigoAleatorio = UUID.randomUUID().toString();
+        return "qr-" + codigoAleatorio;
+}
+
 }

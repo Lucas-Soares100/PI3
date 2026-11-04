@@ -4,15 +4,22 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import com.br.projetoproximaetapa.model.Inscricao;
 import com.br.projetoproximaetapa.repository.IInscricao;
+import com.br.projetoproximaetapa.repository.IEncontro;
+import com.br.projetoproximaetapa.service.QRcodeService;
 
 @Service
 public class InscricaoService {
 
     private final IInscricao inscricaoRepository;
+    private final IEncontro encontroRepository;
+    private final QRcodeService qrCodeService;
+    
 
-    public InscricaoService(IInscricao inscricaoRepository) {
-        this.inscricaoRepository = inscricaoRepository;
-    }
+    public InscricaoService(IInscricao inscricaoRepository, IEncontro encontroRepository, QRcodeService qrCodeService) {
+    this.inscricaoRepository = inscricaoRepository;
+    this.encontroRepository = encontroRepository;
+    this.qrCodeService = qrCodeService;
+}
 
     public List<Inscricao> listarInscricoes() {
         return inscricaoRepository.findAll();

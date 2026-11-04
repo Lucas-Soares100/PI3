@@ -7,6 +7,7 @@ import com.br.projetoproximaetapa.model.Encontro;
 import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.util.Optional;
+import java.util.List;
 
 @Repository 
 public interface IEncontro extends JpaRepository<Encontro, String> {
@@ -15,5 +16,6 @@ public interface IEncontro extends JpaRepository<Encontro, String> {
         @Param("idCurso") String idCurso, 
         @Param("dataEncontro") LocalDate dataEncontro
     );
+    List<Encontro> findByIdCurso(String idCurso);
 
 }

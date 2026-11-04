@@ -2,7 +2,6 @@ package com.br.projetoproximaetapa.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -45,4 +44,4 @@ public class Curso {
 
     @Column(name = "quantidade_aula", nullable = false)
     private Integer quantidadeAula;
-}
+}      

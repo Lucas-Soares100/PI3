@@ -1,8 +1,8 @@
 package com.br.projetoproximaetapa.service;
 
 import java.time.LocalDate;
+import java.util.UUID;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.stereotype.Service;
 import com.br.projetoproximaetapa.dto.PresencaRequestDTO;
 import com.br.projetoproximaetapa.model.Encontro;
@@ -54,19 +54,46 @@ public class PresencaService {
 
     // 2. Lógica personalizada para registrar presença (com QR Code opcional e ID customizado)
     public void registrarPresenca(PresencaRequestDTO request) {
-        String cpfAluno;
-        String idEncontro;
+       
+String cpfAluno;
+String idEncontro;
+String codigoUtilizado;
 
-        // Busca opcional por QR Code usando o findById nativo
-        if (request.getQrCode() != null && !request.getQrCode().trim().isEmpty()) {
-            QRCode qrCode = qrCodeRepository.findById(request.getQrCode())
-                .orElseThrow(() -> new RuntimeException("Erro: QR Code inválido ou não encontrado."));
-            cpfAluno = qrCode.getCpfAluno();
-            idEncontro = qrCode.getIdEncontro();
-        } else {
-            cpfAluno = request.getCpfAluno();
-            idEncontro = request.getIdEncontro();
-        }
+if (request.getQrCode() != null && !request.getQrCode().trim().isEmpty()) {
+
+    // Registro realizado pela leitura do QR Code
+    QRCode qrCode = qrCodeRepository.findById(request.getQrCode())
+        .orElseThrow(() -> new IllegalArgumentException(
+            "QR Code não encontrado."
+        ));
+
+    cpfAluno = qrCode.getCpfAluno();
+    idEncontro = qrCode.getIdEncontro();
+    codigoUtilizado = qrCode.getQr_code();
+
+} else {
+
+    // Registro manual: utiliza o CPF do aluno e o encontro
+    cpfAluno = request.getCpfAluno();
+    idEncontro = request.getIdEncontro();
+
+    // Verifica se as informações foram preenchidas
+    if (cpfAluno == null || cpfAluno.isBlank()
+            || idEncontro == null || idEncontro.isBlank()) {
+        throw new IllegalArgumentException(
+            "Informe o CPF do aluno e o encontro para registrar manualmente."
+        );
+    }
+
+    // Busca o QR Code associado ao aluno e ao encontro
+    QRCode qrCode = qrCodeRepository
+        .findByCpfAlunoAndIdEncontro(cpfAluno, idEncontro)
+        .orElseThrow(() -> new IllegalArgumentException(
+            "Não existe QR Code cadastrado para este aluno nesta aula."
+        ));
+
+    codigoUtilizado = qrCode.getQr_code();
+}
 
         // Busca e valida o Encontro
         Encontro encontro = encontroRepository.findById(idEncontro)
@@ -81,7 +108,22 @@ public class PresencaService {
         Inscricao inscricao = inscricaoRepository.findByCpfAlunoAndIdCurso(cpfAluno, encontro.getIdCurso())
             .orElseThrow(() -> new RuntimeException("Erro: Aluno não inscrito neste curso."));
 
-        // Gera o ID personalizado utilizando a sua lógica de remoção de prefixos
+        // Verifica se o aluno já possui presença registrada neste encontro
+        boolean presencaJaRegistrada = presencaRepository
+            .findByIdInscricaoAndIdEncontro(
+                inscricao.getIdInscricao(),
+             encontro.getIdEncontro()
+            )
+            .isPresent();
+
+        // Impede que a mesma presença seja registrada novamente
+        if (presencaJaRegistrada) {
+            throw new IllegalArgumentException(
+                "A presença deste aluno já foi registrada nesta aula."
+            );
+        }
+
+        // Gera um identificador único para o registro de presença
         String idGerado = gerarIdPersonalizado(request.getQrCode(), encontro.getIdEncontro());
 
         // Cria, configura e salva a presença
@@ -89,28 +131,18 @@ public class PresencaService {
         novaPresenca.setIdPresenca(idGerado);
         novaPresenca.setIdInscricao(inscricao.getIdInscricao());
         novaPresenca.setIdEncontro(encontro.getIdEncontro());
+        novaPresenca.setQrCode(codigoUtilizado);
         novaPresenca.setCpfProfessor(request.getCpfProfessor());
         novaPresenca.setStatusPresenca("presente");
 
         presencaRepository.save(novaPresenca);
     }
 
-    // Método privado com a lógica personalizada de prefixos
+   
+    // Gera um identificador único para cada registro de presença
     private String gerarIdPersonalizado(String qrCode, String idEncontro) {
-        String qr = qrCode != null ? qrCode.trim() : "";
-        String enc = idEncontro != null ? idEncontro.trim() : "";
-
-        String qrSemPrefixo = qr.startsWith("qr") ? qr.substring(2) : qr;
-        String encontroSemPrefixo = enc.startsWith("enc") ? enc.substring(3) : enc;
-
-        String cpfAluno = "";
-        if (qrSemPrefixo.endsWith(encontroSemPrefixo) || qrSemPrefixo.endsWith(enc)) {
-            String sufixoParaRemover = qrSemPrefixo.endsWith(enc) ? enc : encontroSemPrefixo;
-            cpfAluno = qrSemPrefixo.substring(0, qrSemPrefixo.length() - sufixoParaRemover.length());
-        } else {
-            cpfAluno = qrSemPrefixo;
-        }
-
-        return "presn" + cpfAluno + encontroSemPrefixo;
+        String codigoAleatorio = UUID.randomUUID().toString();
+        return "pres-" + codigoAleatorio;
     }
+
 }
