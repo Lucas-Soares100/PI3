@@ -31,9 +31,6 @@ public class UsuarioService {
     private IProfessor professorRepository;
 
     @Autowired
-    private IAdministrador administradorRepository;
-
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
     public List<Usuario> listarUsuarios() {
@@ -87,14 +84,6 @@ public class UsuarioService {
                 professorRepository.save(professor);
                 break;
 
-            case "admin":
-            case "administrador":
-                Administrador admin = new Administrador();
-                admin.setCpf(dto.getCpf());
-                admin.setCargo(dto.getCargo());
-                administradorRepository.save(admin);
-                break;
-
             default:
                 throw new RuntimeException("Tipo de usuário inválido: " + tipo);
         }
@@ -126,7 +115,6 @@ public class UsuarioService {
         // Remove primeiro das tabelas filhas para respeitar restrições de chave estrangeira/integridade
         if (alunoRepository.existsById(cpf)) alunoRepository.deleteById(cpf);
         if (professorRepository.existsById(cpf)) professorRepository.deleteById(cpf);
-        if (administradorRepository.existsById(cpf)) administradorRepository.deleteById(cpf);
         
         usuarioRepository.deleteById(cpf);
         logger.info("Usuário com CPF {} deletado com sucesso.", cpf);

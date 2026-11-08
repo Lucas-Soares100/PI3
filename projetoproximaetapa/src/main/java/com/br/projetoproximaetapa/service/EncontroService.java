@@ -48,8 +48,7 @@ public class EncontroService {
                 sbDatas.append(dia);
             }
         }
-
-        // Adiciona o prefixo "enc" na frente
+        
         return "enc" + cursoId + sbDatas.toString();
     }
 }

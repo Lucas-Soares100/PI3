@@ -32,8 +32,9 @@ public class CursoController {
         return ResponseEntity.status(201).body(cursoService.cadastrarCurso(curso));
     }
 
-    @PutMapping
-    public ResponseEntity<Curso> atualizarCurso(@RequestBody Curso curso) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Curso> atualizarCurso(@PathVariable String id, @RequestBody Curso curso) {
+        curso.setIdCurso(id);
         return ResponseEntity.status(200).body(cursoService.atualizarCurso(curso));
     }
 

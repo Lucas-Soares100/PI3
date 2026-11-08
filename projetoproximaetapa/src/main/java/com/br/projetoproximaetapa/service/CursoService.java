@@ -1,8 +1,9 @@
 package com.br.projetoproximaetapa.service;
 
 import java.text.Normalizer;
-import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 import com.br.projetoproximaetapa.model.Curso;
 import com.br.projetoproximaetapa.model.Universidade;
@@ -47,18 +48,23 @@ public class CursoService {
         return true;
     }
 
+    private static final Map<String, String> SIGLAS_FACULDADES = Map.of(
+    "fundacao escola de comercio alvares penteado", "fecap",
+    "universidade de sao paulo", "usp",
+    "pontificia universidade catolica", "puc"
+    // Adicione outras faculdades aqui conforme necessário
+);
     private String gerarIdPersonalizado(String nomeCurso, String faculdade, String diaSemana, Integer quantidadeAula) {
-        // 1. Primeiras 4 letras do curso (normalizadas e minúsculas)
         String prefixoCurso = (nomeCurso != null && nomeCurso.length() >= 4) 
             ? removerAcentos(nomeCurso).substring(0, 4).toLowerCase() 
             : (nomeCurso != null ? removerAcentos(nomeCurso).toLowerCase() : "curs");
         
-        // 2. Nome da faculdade limpo (sem espaços ou acentos, ex: "FECAP" -> "fecap")
         String limpaFaculdade = (faculdade != null) 
             ? removerAcentos(faculdade).replaceAll("[^a-zA-Z0-9]", "").toLowerCase() 
             : "ext";
+            
+            limpaFaculdade = SIGLAS_FACULDADES.getOrDefault(faculdade, limpaFaculdade);
         
-        // 3. Dia da semana limpo (ex: "Segunda-Feira" -> "segunda")
         String limpaDia = "";
         if (diaSemana != null) {
             limpaDia = removerAcentos(diaSemana).toLowerCase()
@@ -66,13 +72,11 @@ public class CursoService {
                 .replaceAll("[^a-zA-Z0-9]", "");
         }
         
-        // 4. Quantidade de aulas (número final, ex: 2)
         String qtd = (quantidadeAula != null) ? quantidadeAula.toString() : "";
 
         return prefixoCurso + limpaFaculdade + limpaDia + qtd;
     }
 
-    // Auxiliar para remover acentos de strings (ex: "Terça" -> "terca")
     private String removerAcentos(String str) {
         if (str == null) return "";
         String nfdNormalizedString = Normalizer.normalize(str, Normalizer.Form.NFD); 

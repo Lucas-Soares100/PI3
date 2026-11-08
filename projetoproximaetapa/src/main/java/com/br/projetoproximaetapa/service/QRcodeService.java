@@ -63,7 +63,7 @@ public class QRcodeService {
    
     private String gerarIdPersonalizado(String cpfAluno, String idEncontro) {
         String codigoAleatorio = UUID.randomUUID().toString();
-        return "qr-" + codigoAleatorio;
+        return "qr" + codigoAleatorio;
 }
 
 }

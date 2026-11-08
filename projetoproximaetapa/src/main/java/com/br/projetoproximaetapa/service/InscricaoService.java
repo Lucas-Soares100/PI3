@@ -79,10 +79,8 @@ public class InscricaoService {
     }
 
     private String gerarIdPersonalizado(String cpfAluno, String idCurso) {
-        String cpfLimpo = cpfAluno != null ? cpfAluno.replaceAll("[^0-9]", "") : "";
+        String cpf = cpfAluno != null ? cpfAluno.replaceAll("[^0-9]", "") : "";
         String cursoId = idCurso != null ? idCurso.trim() : "";
-        
-        // Adiciona o prefixo "ins" na frente
-        return "ins" + cpfLimpo + cursoId;
+        return "ins" + cpf + cursoId;
     }
 }

@@ -8,7 +8,7 @@ public class RegistroDTO {
     private String nome;
     private String email;
     private String senha;
-    private String tipoUsuario; // "aluno", "professor" ou "admin"
+    private String tipoUsuario; // "aluno" ou "professor"
 
     // Campos específicos para Aluno
     private String telefoneAluno;
@@ -19,7 +19,4 @@ public class RegistroDTO {
     // Campos específicos para Professor
     private String telefoneProfessor;
     private String especialidade;
-
-    // Campos específicos para Administrador
-    private String cargo;
 }

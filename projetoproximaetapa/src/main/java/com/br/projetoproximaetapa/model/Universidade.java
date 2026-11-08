@@ -19,4 +19,9 @@ public class Universidade {
 
     @Column(name = "local_universidade", length = 150)
     private String localUniversidade;
+
+    public void setId(Integer id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setId'");
+    }
 }

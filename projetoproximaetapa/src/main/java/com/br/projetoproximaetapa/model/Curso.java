@@ -2,12 +2,7 @@ package com.br.projetoproximaetapa.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
 import lombok.Data;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
 @Data 
 @Entity

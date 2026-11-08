@@ -32,8 +32,9 @@ public class InscricaoController {
         return ResponseEntity.status(201).body(inscricaoService.cadastrarInscricao(inscricao));
     }
 
-    @PutMapping
-    public ResponseEntity<Inscricao> atualizarInscricao(@RequestBody Inscricao inscricao) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Inscricao> atualizarInscricao(@PathVariable String id, @RequestBody Inscricao inscricao) {
+        inscricao.setIdInscricao(id);
         return ResponseEntity.status(200).body(inscricaoService.atualizarInscricao(inscricao));
     }
 

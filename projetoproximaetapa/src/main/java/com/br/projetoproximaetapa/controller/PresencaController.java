@@ -37,8 +37,9 @@ public class PresencaController {
         return ResponseEntity.status(201).body(presencaService.cadastrarPresenca(presenca));
     }
 
-    @PutMapping
-    public ResponseEntity<Presenca> atualizarPresenca(@RequestBody Presenca presenca) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Presenca> atualizarPresenca(@PathVariable String id, @RequestBody Presenca presenca) {
+        presenca.setIdPresenca(id);
         return ResponseEntity.status(200).body(presencaService.atualizarPresenca(presenca));
     }
 

@@ -40,4 +40,9 @@ public class Blacklist {
 
     @Column(name = "data_fim", insertable = false, updatable = false)
     private LocalDateTime dataFim;
+
+    public void setId(Integer id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setId'");
+    }
 }

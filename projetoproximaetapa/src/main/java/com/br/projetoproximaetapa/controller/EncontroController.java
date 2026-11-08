@@ -32,8 +32,9 @@ public class EncontroController {
         return ResponseEntity.status(201).body(encontroService.cadastrarEncontro(encontro));
     }
 
-    @PutMapping
-    public ResponseEntity<Encontro> atualizarEncontro(@RequestBody Encontro encontro) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Encontro> atualizarEncontro(@PathVariable String id, @RequestBody Encontro encontro) {
+        encontro.setIdEncontro(id);
         return ResponseEntity.status(200).body(encontroService.atualizarEncontro(encontro));
     }
 

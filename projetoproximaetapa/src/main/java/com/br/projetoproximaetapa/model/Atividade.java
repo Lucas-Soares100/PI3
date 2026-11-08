@@ -21,5 +21,10 @@ public class Atividade {
     @Column(name = "data_atividade")
     private LocalDate dataAtividade;
 
+    public void setId(Integer id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setId'");
+    }
+
     
 }
