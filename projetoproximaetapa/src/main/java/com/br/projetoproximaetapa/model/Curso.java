@@ -1,5 +1,7 @@
 package com.br.projetoproximaetapa.model;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
@@ -30,6 +32,9 @@ public class Curso {
 
     @Column(name = "local_curso", length = 150, nullable = false)
     private String localCurso;
+
+    @Column(name = "frequencia_minima", nullable = false)
+    private BigDecimal frequenciaMinima = new BigDecimal("75.00");
 
     @Column(name = "dia_semana", length = 100)
     @Pattern(regexp = "Domingo|Segunda-Feira|Terça-Feira|Quarta-Feira|Quinta-Feira|Sexta-Feira|Sábado", message = "Dia da semana inválido")    private String diaSemana;

@@ -31,4 +31,13 @@ public class Aluno {
     @Pattern(regexp = "EM 1° ano|EM 2° ano|EM 3° ano|Graduação|Pós-Graduação|Mestrado|Doutorado|Pós-Doutorado", 
          message = "Nível de escolaridade inválido")
     private String grade;
+
+    @Column (name = "preferencia", length = 255)
+    private String preferencia;
+
+    @Column (name = "vocacionalResultado", length = 255)
+    private String vocacionalResultado;
+
+    @Column (name = "vocacionalDescricao", length = 255)
+    private String vocacionalDescricao;
 }
