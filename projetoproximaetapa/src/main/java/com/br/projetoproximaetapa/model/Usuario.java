@@ -3,10 +3,8 @@ package com.br.projetoproximaetapa.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import lombok.Data;
@@ -36,9 +34,9 @@ public class Usuario {
     @Column(name = "senha", length = 255, nullable = false)
     private String senha;
 
-    @NotNull(message = "A data de nascimento é obrigatória")
-    @Column(name = "data_nascimento", nullable = false)
-    private LocalDate dataNascimento;
+    @NotBlank(message = "A data de nascimento é obrigatória")
+    @Column(name = "data_nascimento", length = 8, nullable = false)
+    private String dataNascimento;
 
     @Column (name = "biografia", length = 255)
     private String biografia;
