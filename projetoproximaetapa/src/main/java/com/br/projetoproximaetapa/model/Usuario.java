@@ -36,8 +36,8 @@ public class Usuario {
     @Column(name = "senha", length = 255, nullable = false)
     private String senha;
 
-    @NotNull (message = "A data de nascimento é obrigatória!")
-    @Column(name = "data_nascimento")
+    @NotNull(message = "A data de nascimento é obrigatória")
+    @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
 
     @Column (name = "biografia", length = 255)
