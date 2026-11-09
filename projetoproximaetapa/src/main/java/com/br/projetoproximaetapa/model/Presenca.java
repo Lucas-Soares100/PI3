@@ -29,7 +29,7 @@ public class Presenca {
     private String cpfProfessor;
 
     @Column(name = "status_presenca", length = 20, nullable = false)
-    @Pattern(regexp = "Presente | Ausente")
+    @Pattern(regexp = "presente|ausente")
     private String statusPresenca;
 
     @Column(name = "data_presenca", nullable = false)
