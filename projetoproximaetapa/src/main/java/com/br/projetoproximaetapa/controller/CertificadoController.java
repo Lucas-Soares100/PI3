@@ -1,4 +1,4 @@
-package com.br.projetoproximaetapa.controller;
+/*package com.br.projetoproximaetapa.controller;
 
 import java.util.List;
 
@@ -42,4 +42,4 @@ public class CertificadoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(certificado);
     }
 }
-
+*/
