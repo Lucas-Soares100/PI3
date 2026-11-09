@@ -59,7 +59,8 @@ public class UsuarioService {
         usuario.setEmail(dto.getEmail());
         usuario.setSenha(passwordEncoder.encode(dto.getSenha()));
         usuario.setTipoUsuario(dto.getTipoUsuario().toLowerCase());
-        
+        usuario.setDataNascimento(dto.getDataNascimento());
+        usuario.setBiografia(dto.getBiografia());
         Usuario usuarioSalvo = usuarioRepository.save(usuario);
 
         //Salvar na tabela específica dependendo do tipo enviado no DTO
