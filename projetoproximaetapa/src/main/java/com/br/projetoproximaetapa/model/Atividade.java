@@ -22,8 +22,7 @@ public class Atividade {
     private LocalDate dataAtividade;
 
     public void setId(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setId'");
+        this.idAtividade = id;
     }
 
     

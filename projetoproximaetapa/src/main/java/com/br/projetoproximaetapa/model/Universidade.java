@@ -21,7 +21,6 @@ public class Universidade {
     private String localUniversidade;
 
     public void setId(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setId'");
+        this.idUniversidade = id;
     }
 }

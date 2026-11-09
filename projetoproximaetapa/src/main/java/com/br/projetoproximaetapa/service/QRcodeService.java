@@ -26,7 +26,6 @@ public class QRcodeService {
     
     public QRCode cadastrarQRCode(QRCode qrCode) {
 
-        // Verifica se já existe um QR Code para o aluno nesta aula
         QRCode codigoExistente = qrCodeRepository
             .findByCpfAlunoAndIdEncontro(
                 qrCode.getCpfAluno(),
@@ -34,22 +33,19 @@ public class QRcodeService {
             )
             .orElse(null);
 
-        // Se já existe, reutiliza o mesmo QR Code
         if (codigoExistente != null) {
             return codigoExistente;
         }
 
-        // Se não existe, gera um novo identificador
         String idGerado = gerarIdPersonalizado(
             qrCode.getCpfAluno(),
             qrCode.getIdEncontro()
         );
 
         qrCode.setQr_code(idGerado);
-
-        // Salva o novo QR Code no banco de dados
             return qrCodeRepository.save(qrCode);
         }
+
 
     public QRCode atualizarQRCode(QRCode qrCode) {
             return qrCodeRepository.save(qrCode);
@@ -60,7 +56,6 @@ public class QRcodeService {
             return true;
         }
 
-   
     private String gerarIdPersonalizado(String cpfAluno, String idEncontro) {
         String codigoAleatorio = UUID.randomUUID().toString();
         return "qr" + codigoAleatorio;

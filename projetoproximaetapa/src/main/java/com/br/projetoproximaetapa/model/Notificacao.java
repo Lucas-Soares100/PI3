@@ -34,7 +34,6 @@ public class Notificacao {
     private LocalDateTime dataCriacao = LocalDateTime.now();
 
     public void setId(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setId'");
+        this.idNotificacao = id;
     }
 }

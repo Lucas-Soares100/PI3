@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import lombok.Data;
@@ -33,6 +34,13 @@ public class Usuario {
     @NotBlank(message = "A senha é obrigatória!")
     @Column(name = "senha", length = 255, nullable = false)
     private String senha;
+
+    @NotBlank (message = "A data de nascimento é obrigatória!")
+    @Column(name = "data_nascimento")
+    private LocalDate dataNascimento;
+
+    @Column (name = "biografia", length = 255)
+    private String biografia;
 
     @Column(name = "tipo_usuario", length = 20, nullable = false)
     private String tipoUsuario;

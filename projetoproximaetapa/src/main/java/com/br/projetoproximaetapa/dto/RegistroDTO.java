@@ -1,5 +1,7 @@
 package com.br.projetoproximaetapa.dto;
 
+import java.time.LocalDate;
+
 import lombok.Data;
 
 @Data
@@ -8,6 +10,8 @@ public class RegistroDTO {
     private String nome;
     private String email;
     private String senha;
+    private LocalDate dataNascimento;
+    private String biografia;
     private String tipoUsuario; // "aluno" ou "professor"
 
     // Campos específicos para Aluno

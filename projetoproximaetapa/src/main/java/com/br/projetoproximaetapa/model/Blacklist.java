@@ -42,7 +42,6 @@ public class Blacklist {
     private LocalDateTime dataFim;
 
     public void setId(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setId'");
+        this.idBlacklist = id;
     }
 }

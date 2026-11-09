@@ -48,12 +48,22 @@ public class CursoService {
         return true;
     }
 
-    private static final Map<String, String> SIGLAS_FACULDADES = Map.of(
-    "fundacao escola de comercio alvares penteado", "fecap",
-    "universidade de sao paulo", "usp",
-    "pontificia universidade catolica", "puc"
-    // Adicione outras faculdades aqui conforme necessário
+    private static final Map<String, String> SIGLAS_FACULDADES = Map.ofEntries(
+    Map.entry("Fundação Escola de Comércio Álvares Penteado", "FECAP"),
+    Map.entry("Escola Superior de Propaganda e Marketing", "ESPM"),
+    Map.entry("Universidade Presbiteriana Mackenzie", "MACKENZIE"),
+    Map.entry("Insper", "Insper"),
+    Map.entry("Fundação Getulio Vargas", "FGV"),
+    Map.entry("Universidade de São Paulo", "USP"),
+    Map.entry("Universidade Estadual de Campinas", "UNICAMP"),
+    Map.entry("Pontifícia Universidade Católica de São Paulo", "PUC-SP"),
+    Map.entry("Fundação Armando Alvares Penteado", "FAAP"),
+    Map.entry("Centro Universitário São Camilo", "São Camilo"),
+    Map.entry("Universidade Anhembi Morumbi", "Anhembi"),
+    Map.entry("Fundação Instituto de Administração", "FIA"),
+    Map.entry("INTELLI - Instituto de Ensino e Pesquisa", "INTELLI")
 );
+
     private String gerarIdPersonalizado(String nomeCurso, String faculdade, String diaSemana, Integer quantidadeAula) {
         String prefixoCurso = (nomeCurso != null && nomeCurso.length() >= 4) 
             ? removerAcentos(nomeCurso).substring(0, 4).toLowerCase() 
