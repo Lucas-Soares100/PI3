@@ -2,6 +2,7 @@ package com.br.projetoproximaetapa.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.time.ZoneId;
 import org.springframework.stereotype.Service;
 import com.br.projetoproximaetapa.dto.PresencaRequestDTO;
 import com.br.projetoproximaetapa.model.Encontro;
@@ -58,7 +59,6 @@ public void registrarPresenca(PresencaRequestDTO request) {
 
     if (request.getQrCode() != null && !request.getQrCode().trim().isEmpty()) {
 
-    // Registro realizado pela leitura do QR Code
         QRCode qrCode = qrCodeRepository.findById(request.getQrCode())
          .orElseThrow(() -> new IllegalArgumentException(
                 "QR Code não encontrado."
@@ -70,11 +70,9 @@ public void registrarPresenca(PresencaRequestDTO request) {
 
     } else {
 
-    // Registro manual: utiliza o CPF do aluno e o encontro
         cpfAluno = request.getCpfAluno();
         idEncontro = request.getIdEncontro();
 
-    // Verifica se as informações foram preenchidas
         if (cpfAluno == null || cpfAluno.isBlank()
                 || idEncontro == null || idEncontro.isBlank()) {
             throw new IllegalArgumentException(
@@ -82,7 +80,6 @@ public void registrarPresenca(PresencaRequestDTO request) {
             );
         }
 
-    // Busca o QR Code associado ao aluno e ao encontro
         QRCode qrCode = qrCodeRepository
             .findByCpfAlunoAndIdEncontro(cpfAluno, idEncontro)
             .orElseThrow(() -> new IllegalArgumentException(
@@ -92,20 +89,16 @@ public void registrarPresenca(PresencaRequestDTO request) {
         codigoUtilizado = qrCode.getQr_code();
     }
 
-            // Busca e valida o Encontro
             Encontro encontro = encontroRepository.findById(idEncontro)
                 .orElseThrow(() -> new RuntimeException("Erro: Encontro não encontrado."));
 
-        // Valida se a data do encontro corresponde ao dia de hoje
-         if (!encontro.getDataEncontro().equals(LocalDate.now())) {
-                throw new RuntimeException("Erro: Não existe aula agendada para hoje.");
-         }
-
-        // Valida a Inscrição do aluno para o curso correspondente
+        if (!encontro.getDataEncontro().equals(
+            LocalDate.now(ZoneId.of("America/Sao_Paulo")))) {
+            throw new RuntimeException("Erro: Não existe aula agendada para hoje.");
+    }
             Inscricao inscricao = inscricaoRepository.findByCpfAlunoAndIdCurso(cpfAluno, encontro.getIdCurso())
                 .orElseThrow(() -> new RuntimeException("Erro: Aluno não inscrito neste curso."));
 
-        // Verifica se o aluno já possui presença registrada neste encontro
             boolean presencaJaRegistrada = presencaRepository
                 .findByIdInscricaoAndIdEncontro(
                     inscricao.getIdInscricao(),
@@ -113,17 +106,13 @@ public void registrarPresenca(PresencaRequestDTO request) {
                 )
                 .isPresent();
 
-        // Impede que a mesma presença seja registrada novamente
             if (presencaJaRegistrada) {
                 throw new IllegalArgumentException(
                    "A presença deste aluno já foi registrada nesta aula."
                 );
             }
 
-        // Gera um id único para o registro de presença
             String idGerado = gerarIdPersonalizado(request.getQrCode(), encontro.getIdEncontro());
-
-        // Cria, configura e salva a presença
             Presenca novaPresenca = new Presenca();
             novaPresenca.setIdPresenca(idGerado);
             novaPresenca.setIdInscricao(inscricao.getIdInscricao());
