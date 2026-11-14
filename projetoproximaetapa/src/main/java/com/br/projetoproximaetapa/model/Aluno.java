@@ -35,9 +35,6 @@ public class Aluno {
     @Column (name = "preferencia", length = 255)
     private String preferencia;
 
-    @Column (name = "urlfoto", length = 255)
-    private String foto;
-
     @Column (name = "vocacionalResultado", length = 255)
     private String vocacionalResultado;
 

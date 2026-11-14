@@ -43,6 +43,9 @@ public class Usuario {
     @Column (name = "biografia", length = 255)
     private String biografia;
 
+    @Column (name = "foto_url", length = 255)
+    private String foto;
+
     @Column(name = "tipo_usuario", length = 20, nullable = false)
     private String tipoUsuario;
 
