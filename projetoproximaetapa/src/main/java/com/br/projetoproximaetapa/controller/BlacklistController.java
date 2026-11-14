@@ -33,8 +33,8 @@ public class BlacklistController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Blacklist> atualizarBlacklist(@PathVariable Integer id, @RequestBody Blacklist blacklist) {
-        blacklist.setId(id);
+    public ResponseEntity<Blacklist> atualizarBlacklist(@PathVariable String id, @RequestBody Blacklist blacklist) {
+        blacklist.setIdBlacklist(id);
         return ResponseEntity.status(200).body(blacklistService.atualizarBlacklist(blacklist));
     }
 

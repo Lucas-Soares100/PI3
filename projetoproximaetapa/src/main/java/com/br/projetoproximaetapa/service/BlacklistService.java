@@ -10,6 +10,7 @@ public class BlacklistService {
 
     private final IBlacklist blacklistRepository;
 
+
     public BlacklistService(IBlacklist blacklistRepository) {
         this.blacklistRepository = blacklistRepository;
     }
@@ -23,6 +24,8 @@ public class BlacklistService {
     }
 
     public Blacklist cadastrarBlacklist(Blacklist blacklist) {
+        String idGerado = gerarIdPersonalizado(blacklist.getCpfAluno(), blacklist.getNivelStrike());
+        blacklist.setIdBlacklist(idGerado);
         return blacklistRepository.save(blacklist);
     }
 
@@ -33,5 +36,11 @@ public class BlacklistService {
     public Boolean deletarBlacklist(Integer id) {
         blacklistRepository.deleteById(id);
         return true;
+    }
+
+    private String gerarIdPersonalizado(String cpfAluno, Integer nivel_strike) {
+        String cpf = cpfAluno != null ? cpfAluno.replaceAll("[^0-9]", "") : "";
+        String nivelStrike = nivel_strike != null ? String.valueOf(nivel_strike) : "";
+        return "bl" + cpf + nivelStrike;
     }
 }

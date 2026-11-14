@@ -14,9 +14,8 @@ import lombok.Data;
 public class Blacklist {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_blacklist")
-    private Integer idBlacklist;
+    private String idBlacklist;
 
     @Column(name = "cpf_aluno", length = 11, nullable = false)
     private String cpfAluno;
@@ -40,8 +39,4 @@ public class Blacklist {
 
     @Column(name = "data_fim", insertable = false, updatable = false)
     private LocalDateTime dataFim;
-
-    public void setId(Integer id) {
-        this.idBlacklist = id;
-    }
 }
