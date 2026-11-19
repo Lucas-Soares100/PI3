@@ -1,5 +1,6 @@
-CREATE DATABASE defaultdb;
+CREATE DATABASE IF NOT EXISTS defaultdb;
 USE defaultdb;
+
 
 CREATE TABLE Usuario ( 
     cpf           CHAR(11) PRIMARY KEY, 
@@ -8,11 +9,12 @@ CREATE TABLE Usuario (
     senha         VARCHAR(255) NOT NULL,
     data_nascimento DATE,
     biografia	VARCHAR(255),
+    foto_url VARCHAR(255),
     tipo_usuario  VARCHAR(20) NOT NULL
         CHECK (tipo_usuario IN ('aluno', 'professor')), 
     data_cadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP 
 ); 
- 
+
  
 CREATE TABLE Aluno ( 
     cpf            CHAR(11) PRIMARY KEY, 
@@ -37,7 +39,7 @@ CREATE TABLE Professor (
  
 
 CREATE TABLE Blacklist ( 
-id_blacklist INT AUTO_INCREMENT PRIMARY KEY, 
+id_blacklist VARCHAR(255) PRIMARY KEY, 
     cpf_aluno     CHAR(11) NOT NULL, 
     cpf_professor CHAR(11) NOT NULL, 
     motivo        TEXT NOT NULL,
@@ -50,7 +52,7 @@ dias_bloqueio DAY )) STORED,
     FOREIGN KEY (cpf_aluno) REFERENCES Aluno(cpf), 
     FOREIGN KEY (cpf_professor) REFERENCES Professor(cpf) 
 ); 
- 
+
  
 CREATE TABLE Universidade ( 
     id_universidade    INT AUTO_INCREMENT PRIMARY KEY, 

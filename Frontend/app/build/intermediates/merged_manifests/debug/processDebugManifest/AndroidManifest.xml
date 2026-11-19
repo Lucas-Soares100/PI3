@@ -31,7 +31,7 @@
         android:theme="@style/Theme.ErrorNullProximaEtapa"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name="com.example.errornull_proximaetapa.LoginInfo"
+            android:name="com.example.errornull_proximaetapa.auth.LoginInfo"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,16 +39,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.errornull_proximaetapa.Cadastro" />
+        <activity android:name="com.example.errornull_proximaetapa.auth.Cadastro" />
         <activity
-            android:name="com.example.errornull_proximaetapa.TelaPerfil"
+            android:name="com.example.errornull_proximaetapa.MainActivity"
             android:exported="false" />
-        <activity
-            android:name="com.example.errornull_proximaetapa.TelaCurso"
-            android:exported="false" />
-        <activity android:name="com.example.errornull_proximaetapa.CursoInfo" />
-        <activity android:name="com.example.errornull_proximaetapa.TelaOportunidades" />
+        <activity android:name="com.example.errornull_proximaetapa.curso.CursoInfo" />
         <activity android:name="com.example.errornull_proximaetapa.Questionario" />
+        <activity android:name="com.example.errornull_proximaetapa.administrador.AdminActivity" />
+        <activity android:name="com.example.errornull_proximaetapa.professor.ProfessorActivity" />
+        <activity android:name="com.example.errornull_proximaetapa.aluno.ListaEventosActivity" />
+        <activity android:name="com.example.errornull_proximaetapa.curso.PerfilFaculdadeActivity" />
+        <activity android:name="com.example.errornull_proximaetapa.curso.TelaAulaCurso" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

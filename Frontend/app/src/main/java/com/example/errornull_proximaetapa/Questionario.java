@@ -17,13 +17,10 @@ public class Questionario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_questionario);
 
-        ImageButton btnVoltar = findViewById(R.id.btnVoltar);
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        View btnVoltar = findViewById(R.id.btnVoltar);
+        if (btnVoltar != null) {
+            btnVoltar.setOnClickListener(v -> finish());
+        }
 
         Button btnEnviar = findViewById(R.id.btnEnviar);
         btnEnviar.setOnClickListener(new View.OnClickListener() {
@@ -165,10 +162,23 @@ public class Questionario extends AppCompatActivity {
     }
 
     private void mostrarResultado(String perfil, String descricao) {
+        android.content.SharedPreferences sp = UserSession.getScopedPreferences(this);
+        sp.edit()
+                .putString("resultado_perfil_vocacional", perfil)
+                .putString("resultado_perfil_descricao", descricao)
+                .putBoolean("questionario_concluido", true)
+                .apply();
+
+        com.example.errornull_proximaetapa.auth.NotificationHelper.adicionarNotificacao(
+                this,
+                "Questionário Vocacional Concluído!",
+                "Seu perfil vocacional foi definido como " + perfil + "."
+        );
+
         new AlertDialog.Builder(this)
-                .setTitle("Seu Perfil Vocacional: " + perfil)
-                .setMessage(descricao)
-                .setPositiveButton("Finalizar", (dialog, which) -> {
+                .setTitle("🎯 Perfil Vocacional: " + perfil)
+                .setMessage(descricao + "\n\nO seu resultado foi salvo com sucesso no seu perfil!")
+                .setPositiveButton("Voltar para a Tela Principal", (dialog, which) -> {
                     Intent data = new Intent();
                     data.putExtra("RESULTADO_PERFIL", perfil);
                     setResult(RESULT_OK, data);
