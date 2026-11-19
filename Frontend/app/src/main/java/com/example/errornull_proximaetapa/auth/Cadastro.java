@@ -147,6 +147,8 @@ public class Cadastro extends AppCompatActivity {
         String email = viewModel.getEmail();
         String senha = viewModel.getSenha();
         String tipoUsuario = viewModel.getTipoUsuario();
+        String dataNascimento = viewModel.getNascimento();
+        String fotoUrl = viewModel.getFotoUri();
 
         if (cpf.isEmpty() || nome.isEmpty() || email.isEmpty() || senha.isEmpty()) {
             Toast.makeText(Cadastro.this, "Preencha os campos obrigatórios na Parte 1!", Toast.LENGTH_SHORT).show();
@@ -180,7 +182,7 @@ public class Cadastro extends AppCompatActivity {
                 .putString("email", email)
                 .putString("cpf", cpf)
                 .putString("tipoUsuario", tipoUsuario)
-                .putString("idade", viewModel.getNascimento())
+                .putString("Data Nascimento", viewModel.getNascimento())
                 .putString("estado", viewModel.getCidade())
                 .putString("escola", escola)
                 .putString("grade", grade)
@@ -192,7 +194,7 @@ public class Cadastro extends AppCompatActivity {
                 .apply();
 
         CadastroRequest request = new CadastroRequest(
-                cpf, nome, email, senha, tipoUsuario,
+                cpf, nome, email, dataNascimento, senha, fotoUrl, tipoUsuario,
                 telAluno, escola, cidade, grade,
                 telProf, especialidade, cargo
         );

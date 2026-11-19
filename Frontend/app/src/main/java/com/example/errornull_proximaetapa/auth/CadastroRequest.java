@@ -4,7 +4,9 @@ public class CadastroRequest {
     private String cpf;
     private String nome;
     private String email;
+    private String dataNascimento; // Enviada como String ("yyyy-MM-dd")
     private String senha;
+    private String fotoUrl;         // URL ou URI da foto selecionada
     private String tipoUsuario;
 
     // Campos específicos de Aluno
@@ -20,13 +22,15 @@ public class CadastroRequest {
     // Campos específicos de Administrador
     private String cargo;
 
-    public CadastroRequest(String cpf, String nome, String email, String senha, String tipoUsuario,
+    public CadastroRequest(String cpf, String nome, String email, String dataNascimento, String senha, String fotoUrl, String tipoUsuario,
                            String telefoneAluno, String escola, String cidade, String grade,
                            String telefoneProfessor, String especialidade, String cargo) {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
+        this.dataNascimento = dataNascimento;
         this.senha = senha;
+        this. fotoUrl = fotoUrl;
         this.tipoUsuario = tipoUsuario;
         this.telefoneAluno = telefoneAluno;
         this.escola = escola;
@@ -47,8 +51,14 @@ public class CadastroRequest {
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 
+    public String getDataNascimento() { return dataNascimento; }
+    public void setDataNascimento(String dataNascimento) { this.dataNascimento = dataNascimento; }
+
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha; }
+
+    public String getFotoUrl() { return fotoUrl; }
+    public void setFotoUrl(String fotoUrl) { this.fotoUrl = fotoUrl; }
 
     public String getTipoUsuario() { return tipoUsuario; }
     public void setTipoUsuario(String tipoUsuario) { this.tipoUsuario = tipoUsuario; }

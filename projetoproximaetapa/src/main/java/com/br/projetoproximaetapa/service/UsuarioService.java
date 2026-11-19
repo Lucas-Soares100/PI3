@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -61,6 +62,14 @@ public class UsuarioService {
         usuario.setTipoUsuario(dto.getTipoUsuario().toLowerCase());
         usuario.setDataNascimento(dto.getDataNascimento());
         usuario.setBiografia(dto.getBiografia());
+
+        if (dto.getDataNascimento() != null && !dto.getDataNascimento().isEmpty()) {
+            usuario.setDataNascimento(LocalDate.parse(dto.getDataNascimento()));
+        }
+        
+        // Salva a URL da foto enviada pelo frontend no banco de dados
+        usuario.setFoto(dto.getFotoUrl());
+        
         Usuario usuarioSalvo = usuarioRepository.save(usuario);
 
         //Salvar na tabela específica dependendo do tipo enviado no DTO
